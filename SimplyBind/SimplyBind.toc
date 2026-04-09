@@ -1,0 +1,8 @@
+## Interface: 100200
+## Title: SimplyBind
+## Notes: Simple and powerful keybinding management
+## SavedVariables: SimplyBindDB
+## Author: SimplyDarko
+## Version: 1.0
+
+SimplyBind.lua

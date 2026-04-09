@@ -1,0 +1,28 @@
+## Interface: 110207, 120000, 120001, 120005
+## Title: GCD Cursor Plus
+## Author: TimeMeansNothing
+## Version: 1.0.5
+## IconTexture: Interface\AddOns\GCDCursorPlus\Media\Icon
+## SavedVariables: GCDCursorPlusDB
+## Notes: Enhanced mouse cursor with GCD tracking, rings, and trails
+## Notes-deDE: Verbesserter Mauszeiger mit GCD-Verfolgung, Ringen und Spuren
+## Notes-esES: Cursor de ratón mejorado con seguimiento de GCD, anillos y rastros
+## Notes-frFR: Curseur de souris amélioré avec suivi GCD, anneaux et traînées
+## Notes-zhCN: 增强型鼠标光标，带有GCD跟踪、光环和轨迹
+
+# Libraries
+Libs\LibStub\LibStub.lua
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+Libs\LibGCDCP\LibGCDCP.xml
+
+# Localization
+Locales\enUS.lua
+Locales\deDE.lua
+Locales\esES.lua
+Locales\frFR.lua
+Locales\zhCN.lua
+
+# Core
+Core.lua
+Settings.lua
+

@@ -1,0 +1,33 @@
+## Interface: 110002
+## Title: Makulu Helper
+## Notes: Quick reference and learning tool for Makulu Framework
+## Author: Makulu Framework Team
+## Version: 1.0.0
+## SavedVariables: MakuluHelperDB
+## OptionalDeps: MakuluFramework
+
+# Core files
+Core\Init.lua
+Core\Database.lua
+Core\Utils.lua
+
+# Data files
+Data\SpellData.lua
+Data\APIData.lua
+
+# Features
+Features\SlashCommands.lua
+Features\SpellLookup.lua
+Features\APIReference.lua
+Features\ErrorDetection.lua
+
+# UI
+UI\MainFrame.lua
+UI\SpellTab.lua
+UI\APITab.lua
+UI\ExamplesTab.lua
+UI\SettingsTab.lua
+
+# Main
+Main.lua
+

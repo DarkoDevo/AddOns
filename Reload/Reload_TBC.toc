@@ -1,0 +1,17 @@
+## Interface: 20505
+## Title: Reload
+## Notes: Slash commands and keybind for reloading your ui
+## Author: Synse
+## Version: 1.2.1
+## Category: Development Tools
+## Category-deDE: Entwicklungstools
+## Category-esES: Herramientas de Desarrollo
+## Category-esMX: Herramientas de Desarrollo
+## Category-frFR: Outils de Développement
+## Category-itIT: Strumenti di sviluppo
+## Category-ptBR: Ferramentas de Desenvolvimento
+## Category-ruRU: Инструменты разработки
+## Category-zhCN: 开发工具
+## Category-zhTW: 開發工具
+## IconTexture: Interface/Icons/Trade_Engineering
+Reload.lua

@@ -1,0 +1,9 @@
+## Interface: 110002
+
+## Title: SimplyDebounce Clique Fake
+## Version: 2.0.4
+## Author: mundi4
+## IconTexture: 133015
+## LoadOnDemand: 1
+
+SimplyDebounceCliqueFake.xml

@@ -1,0 +1,2 @@
+- Update TOC for Midnight
+- Add currency transfer frame

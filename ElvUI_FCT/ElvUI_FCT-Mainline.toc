@@ -1,0 +1,15 @@
+## Author: Simpy, Lightspark
+## Title: |cff1784d1ElvUI|r |cFFdd2244Floating Combat Text|r
+## SavedVariables: ElvFCT
+## RequiredDeps: ElvUI
+## Interface: 100100
+## Version: 1.28
+## IconTexture: Interface\AddOns\ElvUI_FCT\Button
+## X-Tukui-ProjectID: 137
+## X-Tukui-ProjectFolders: ElvUI_FCT
+
+locales\load_locales.xml
+settings.lua
+init.lua
+core.lua
+

@@ -1,0 +1,47 @@
+## Interface: 110207, 120000, 120001
+## Title: |cFFFFFFFFSkill|r|cff7ba4fcCapped|r
+## Version: v2.2.6f
+## IconTexture: Interface\AddOns\SkillCapped\media\icon.blp
+## Notes: Setup WoW’s best PvP UI with just ONE click!
+## Author: SkillCapped
+## SavedVariables: SkillCappedDB, SkillCappedWeakAurasDB, SkillCappedBackupDB
+## X-Curse-Project-ID: 1016959
+
+libs\TaintLess.xml
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua
+libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+libs\LibDBIcon-1.0\lib.xml
+
+SC_Init.lua
+
+retail\SkillCapped.lua
+
+retail\presets\addons\ArcUI.lua
+retail\presets\addons\BattleGroundEnemiesFixed.lua
+retail\presets\addons\BattlegroundWinConditions.lua
+retail\presets\addons\BetterBags.lua
+retail\presets\addons\BetterBlizzFrames.lua
+retail\presets\addons\BetterBlizzPlates.lua
+retail\presets\addons\Capping.lua
+retail\presets\addons\Details.lua
+retail\presets\addons\DejaCharacterStats.lua
+retail\presets\addons\FrameColor.lua
+retail\presets\addons\FrameSort.lua
+retail\presets\addons\HealthBarColor.lua
+retail\presets\addons\MiniCC.lua
+retail\presets\addons\sArena_Reloaded.lua
+retail\presets\addons\TalentLoadoutsEx.lua
+
+retail\presets\cvars\CVars.lua
+retail\presets\editmode\EditMode.lua
+retail\presets\editmode\CooldownManager.lua
+retail\presets\addons\AddonList.lua
+retail\presets\addons\AddonSets.lua
+
+retail\functions.lua
+retail\gui.lua
+shared\fonts.lua
+retail\bisGear.lua
+retail\events.lua

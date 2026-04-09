@@ -1,0 +1,3 @@
+## Interface: 90100
+## Title: First Double Click To Sign Up
+core.lua

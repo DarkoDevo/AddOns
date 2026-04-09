@@ -1,0 +1,20 @@
+## Interface: 110002
+
+## Title: SimplyDebounce
+## Version: 2.0.4
+## Author: mundi4
+## IconTexture: 133015
+## SavedVariables: SimplyDebounceVars
+## SavedVariablesPerCharacter: SimplyDebounceVarsPerChar
+## OptionalDeps: Clique, Grid2, DevTool, ViragDevTool
+## AddonCompartmentFunc: SimplyDebounce_CompartmentFunc
+## Notes: Key Bindings and a Little More with Auto-Generate Keybinds.|n|nSlash Command: |cffffff00/sdeb|r
+## X-Curse-Project-ID: 970278
+
+libs.xml
+locales.xml
+
+SimplyDebounce.xml
+SimplyDebounceUI.xml
+
+Public.lua

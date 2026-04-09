@@ -1,0 +1,143 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+    <!-- Load Ace3 Libraries -->
+    <Script file="Libs\LibStub\LibStub.lua"/>
+    <Include file="Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml"/>
+    <Include file="Libs\AceDB-3.0\AceDB-3.0.xml"/>
+
+    <!-- Load addon files -->
+    <Script file="Init.lua"/>
+    <Script file="Data\DrList_Retail.lua"/>
+    <Script file="DiminishingReturns.lua"/>
+    <Script file="Core.lua"/>
+
+    <!-- DR Frame Template -->
+    <Frame name="DRTrackerDRFrameTemplate" enablemouse="true" movable="true" hidden="true" virtual="true">
+        <Size x="28" y="28"/>
+        <Layers>
+            <Layer level="OVERLAY">
+                <Texture parentKey="Border" file="Interface\Buttons\UI-Quickslot-Depress"/>
+            </Layer>
+            
+            <Layer level="ARTWORK">
+                <Texture parentKey="Icon">
+                    <TexCoords left="0.08" right="0.92" top="0.08" bottom="0.92"/>
+                </Texture>
+            </Layer>
+        </Layers>
+
+        <Frames>
+            <Cooldown parentKey="Cooldown" drawBling="false" hideCountdownNumbers="false" inherits="CooldownFrameTemplate">
+                <SwipeTexture>
+                    <Color r="0" g="0" b="0" a="0.6"/>
+                </SwipeTexture>
+                <Scripts>
+                    <OnLoad>
+                        self:SetDrawBling(false)
+                        self:SetReverse(true)
+                        for _, region in next, { self:GetRegions() } do
+                            if region:GetObjectType() == "FontString" then
+                                self.Text = region;
+                                self.Text.fontFile = region:GetFont();
+                            end
+                        end
+                        self.parent = self:GetParent();
+                    </OnLoad>
+                    <OnShow>
+                        self.parent:GetParent():UpdateDRPositions();
+                    </OnShow>
+                    <OnHide>
+                        self.parent:Hide();
+                        self.parent.severity = 1;
+                        self.parent:GetParent():UpdateDRPositions();
+                    </OnHide>
+                </Scripts>
+            </Cooldown>
+            <Frame parentKey="DRTextFrame" frameStrata="HIGH" setAllPoints="true">
+                <Layers>
+                    <Layer level="OVERLAY">
+                        <FontString parentKey="DRText" inherits="GameFontNormalLarge">
+                            <Anchors>
+                                <Anchor point="BOTTOMRIGHT" x="4" y="-4"/>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+        </Frames>
+        <Scripts>
+            <OnLoad>
+                self.severity = 1;
+            </OnLoad>
+        </Scripts>
+    </Frame>
+
+    <!-- Arena Frame Template -->
+    <Frame name="DRTrackerArenaFrameTemplate" mixin="DRTrackerFrameMixin" enablemouse="true" movable="true" clampedToScreen="true" virtual="true">
+        <Size x="50" y="50"/>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Background" setAllPoints="true">
+                    <Color r="0.1" g="0.1" b="0.1" a="0.8"/>
+                </Texture>
+            </Layer>
+            <Layer level="BORDER">
+                <Texture parentKey="Border" setAllPoints="true" file="Interface\Tooltips\UI-Tooltip-Border">
+                    <Color r="1" g="1" b="1" a="0.5"/>
+                </Texture>
+            </Layer>
+            <Layer level="ARTWORK">
+                <FontString parentKey="Label" inherits="GameFontNormalLarge">
+                    <Anchors>
+                        <Anchor point="CENTER"/>
+                    </Anchors>
+                    <Color r="1" g="1" b="0"/>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad>
+                self:RegisterForDrag("LeftButton");
+                self:SetMovable(true);
+                self:EnableMouse(true);
+                print("DR Tracker: Frame " .. self:GetID() .. " loaded and ready to drag");
+            </OnLoad>
+            <OnDragStart>
+                print("DR Tracker: Drag started on frame " .. self:GetID() .. ", Alt=" .. tostring(IsAltKeyDown()));
+                if IsAltKeyDown() then
+                    self:StartMoving();
+                    self.Background:SetColorTexture(0.2, 0.5, 0.2, 0.9);
+                    print("DR Tracker: Frame " .. self:GetID() .. " is now moving");
+                end
+            </OnDragStart>
+            <OnDragStop>
+                print("DR Tracker: Drag stopped on frame " .. self:GetID());
+                self:StopMovingOrSizing();
+                self.Background:SetColorTexture(0.1, 0.1, 0.1, 0.8);
+                local frameID = "arena" .. self:GetID();
+                if self.parent then
+                    self.parent:SaveFramePosition(frameID);
+                    print("DR Tracker: Position saved for " .. frameID);
+                else
+                    print("DR Tracker: ERROR - self.parent is nil!");
+                end
+            </OnDragStop>
+            <OnEnter>
+                self.Background:SetColorTexture(0.2, 0.2, 0.3, 0.9);
+                GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+                GameTooltip:SetText("DR Tracker - Arena " .. self:GetID(), 1, 1, 0);
+                GameTooltip:AddLine("Alt+Drag to move", 1, 1, 1);
+                GameTooltip:AddLine("DRs will appear to the right", 0.7, 0.7, 0.7);
+                GameTooltip:Show();
+            </OnEnter>
+            <OnLeave>
+                self.Background:SetColorTexture(0.1, 0.1, 0.1, 0.8);
+                GameTooltip:Hide();
+            </OnLeave>
+        </Scripts>
+    </Frame>
+
+
+</Ui>
+

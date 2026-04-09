@@ -1,0 +1,24 @@
+## Interface: 110200
+## Title: MMR Tracker
+## Version: 1.2.2
+## Author: RBGDEV
+## Notes: Tracks personal MMR and Rating for all pvp brackets
+## IconTexture: Interface/AddOns/MMRTracker/logo.tga
+## SavedVariables: MMRTrackerDB
+## Category: RBGDEV
+## X-Category: Battlegrounds/PvP
+## X-License: All Rights Reserved
+## X-Website: https://www.curseforge.com/wow/addons/mmr-tracker
+## X-Curse-Project-ID: 1160257
+## X-Wago-ID: qGZRxdGd
+## X-WoWI-ID: 26885
+
+#@no-lib-strip@
+embeds.xml
+#@end-no-lib-strip@
+
+config.lua
+helpers.lua
+interface.lua
+options.lua
+MMRTracker.lua

@@ -1,0 +1,48 @@
+## Interface: 20505
+## Title: |cFFFFFFFFSkill|r|cff7ba4fcCapped|r
+## Version: v2.2.6f
+## IconTexture: Interface\AddOns\SkillCapped\media\icon.blp
+## Notes: Setup WoW’s best PvP UI with just ONE click!
+## Author: SkillCapped
+## SavedVariables: SkillCappedDB, SkillCappedWeakAurasDB, SkillCappedBackupDB
+## X-Curse-Project-ID: 1016959
+
+libs\TaintLess.xml
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua
+libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+libs\LibDBIcon-1.0\lib.xml
+
+SC_Init.lua
+
+mop\SkillCapped.lua
+
+tbc\presets\addons\BetterBags.lua
+tbc\presets\addons\BattleGroundEnemies.lua
+tbc\presets\addons\BigDebuffs.lua
+tbc\presets\addons\BuffOverlay.lua
+tbc\presets\addons\BetterBlizzFrames.lua
+tbc\presets\addons\BetterBlizzPlates.lua
+tbc\presets\addons\Capping.lua
+tbc\presets\addons\Details.lua
+tbc\presets\addons\Diminish.lua
+tbc\presets\addons\SimpleItemLevel.lua
+tbc\presets\addons\FrameSort.lua
+tbc\presets\addons\Gladdy.lua
+tbc\presets\addons\OmniBar.lua
+tbc\presets\addons\OmniCD.lua
+
+tbc\presets\cvars\CVars.lua
+retail\presets\editmode\EditMode.lua
+tbc\presets\addons\AddonList.lua
+tbc\presets\addons\AddonSets.lua
+
+tbc\presets\weakauras\WeakAuras.lua
+tbc\presets\weakauras\Import.lua
+
+mop\functions.lua
+tbc\gui.lua
+shared\fonts.lua
+tbc\bisGear.lua
+tbc\events.lua

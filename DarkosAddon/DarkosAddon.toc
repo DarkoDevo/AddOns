@@ -1,0 +1,11 @@
+## Interface: 100002
+## Title: |cff00ccffDarkosAddon|r v0.0.1
+## Notes: Attempt at making an Addon
+## Author: DarkoGaming
+## Version: 0.0.1
+
+## DefaultState: enabled
+## LoadOnDemand: 1
+
+## Addon Files ##
+DarkosAddon.lua

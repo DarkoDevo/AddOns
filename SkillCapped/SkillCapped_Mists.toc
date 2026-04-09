@@ -1,0 +1,52 @@
+## Interface: 50503, 50502
+## Title: |cFFFFFFFFSkill|r|cff7ba4fcCapped|r
+## Version: v2.2.6f
+## IconTexture: Interface\AddOns\SkillCapped\media\icon.blp
+## Notes: Setup WoW’s best PvP UI with just ONE click!
+## Author: SkillCapped
+## SavedVariables: SkillCappedDB, SkillCappedWeakAurasDB, SkillCappedBackupDB
+## X-Curse-Project-ID: 1016959
+
+libs\TaintLess.xml
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua
+libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+libs\LibDBIcon-1.0\lib.xml
+
+SC_Init.lua
+
+mop\SkillCapped.lua
+
+mop\presets\addons\Bagnon.lua
+mop\presets\addons\Bartender4.lua
+mop\presets\addons\BattlegroundTargets.lua
+mop\presets\addons\BigDebuffs.lua
+mop\presets\addons\BuffOverlay.lua
+mop\presets\addons\BetterBlizzFrames.lua
+mop\presets\addons\BetterBlizzPlates.lua
+mop\presets\addons\Capping.lua
+mop\presets\addons\Details.lua
+mop\presets\addons\Diminish.lua
+mop\presets\addons\SimpleItemLevel.lua
+mop\presets\addons\FrameColor.lua
+mop\presets\addons\FrameSort.lua
+mop\presets\addons\sArena_MoP.lua
+mop\presets\addons\ReforgeLite.lua
+mop\presets\addons\HealthBarColor.lua
+mop\presets\addons\OmniBar.lua
+mop\presets\addons\OmniCD.lua
+
+mop\presets\cvars\CVars.lua
+mop\presets\editmode\EditMode.lua
+mop\presets\addons\AddonList.lua
+mop\presets\addons\AddonSets.lua
+
+mop\presets\weakauras\WeakAuras.lua
+mop\presets\weakauras\Import.lua
+
+mop\functions.lua
+mop\gui.lua
+shared\fonts.lua
+mop\bisGear.lua
+mop\events.lua

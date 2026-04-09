@@ -1,0 +1,20 @@
+## Interface: 110002
+
+## Title: Debounce
+## Version: 2.0.4
+## Author: mundi4
+## IconTexture: 133015
+## SavedVariables: DebounceVars
+## SavedVariablesPerCharacter: DebounceVarsPerChar
+## OptionalDeps: Clique, Grid2, DevTool, ViragDevTool
+## AddonCompartmentFunc: Debounce_CompartmentFunc
+## Notes: Key Bindings and a Little More.|n|nSlash Command: |cffffff00/deb|r
+## X-Curse-Project-ID: 970278
+
+libs.xml
+locales.xml
+
+Debounce.xml
+DebounceUI.xml
+
+Public.lua

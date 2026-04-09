@@ -1,0 +1,14 @@
+## Interface: 120000
+## Title: TooManyAddons
+## Notes: Addon Manager
+## Author: Tvalean, Dax006 (Original Author)
+## Version: 12.0.0
+## Dependencies:
+## SavedVariables: TMAsettings,TMAdebug
+## SavedVariablesPerCharacter: TMAprofiles, TMAlastgloballoaded
+## X-Category: Interface Enhancements
+## X-Curse-Packaged-Version: release
+## X-Curse-Project-Name: TooManyAddons
+## X-Curse-Project-ID: too-many-addons
+TooManyAddonsInterface.lua
+TooManyAddons.lua

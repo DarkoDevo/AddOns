@@ -1,0 +1,24 @@
+## Interface: 120001, 11503, 20504, 30405, 40400, 50500
+## Title: AshToAsh
+## Author: kurapica125@outlook.com
+## Version: r074
+## Notes: A skin supported raid panel with full features
+## Dependencies: Scorpio
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: AshToAsh_DB
+## SavedVariablesPerCharacter: AshToAsh_CharDB
+## X-Curse-Project-ID: 425642
+## X-Wago-ID: kaNeRX62
+
+# Localization
+localization\zhCN.lua
+localization\zhTW.lua
+
+# Core
+AshToAsh.lua
+Template.lua
+SpellBinding.lua
+
+# Skin
+DefaultSkin.lua

@@ -1,0 +1,100 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Meorawr/wow-ui-schema/main/UI.xsd">
+
+    <Button name="DatamineGenericButtonTemplate" virtual="true"
+        registerForClicks="LeftButtonUp">
+        <Size x="35" y="35" />
+        <Layers>
+            <Layer level="HIGHLIGHT">
+                <Texture parentKey="HighlightTexture" inherits="DatamineCustomAtlasTemplate"
+                    setAllPoints="true" alphaMode="ADD">
+                    <KeyValues>
+                        <KeyValue key="FileName" value="Blizzard_UITools.blp" />
+                        <KeyValue key="AtlasName" value="uitools-icon-highlight" />
+                    </KeyValues>
+                </Texture>
+            </Layer>
+        </Layers>
+    </Button>
+
+    <Button name="DatamineCloseButtonTemplate" virtual="true"
+        inherits="DatamineGenericButtonTemplate" registerForClicks="LeftButtonUp"
+        mixin="DatamineCloseButtonMixin">
+        <Layers>
+            <Layer level="ARTWORK">
+                <Texture parentKey="NormalTexture"
+                    file="Interface/AddOns/Datamine/Assets/Icons/cross.png">
+                    <Size x="14" y="14" />
+                    <Anchors>
+                        <Anchor point="CENTER" />
+                    </Anchors>
+                </Texture>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnClick method="OnClick" />
+        </Scripts>
+    </Button>
+
+    <!-- Add a .TooltipText keyValue to set your tooltip text OR provide a :GetTooltipText func -->
+    <!-- Add a .TooltipTextColor keyValue to set your tooltip text color -->
+    <!-- Add a .TooltipAnchorPoint keyValue to set your tooltip anchor point -->
+    <!-- Add a .TooltipOffset(X|Y) keyValue to set your tooltip anchor offsets -->
+    <!-- Add a .TooltipDeferShowFor keyValue to set a delay before showing the tooltip -->
+    <Button name="DatamineTooltipButtonTemplate" virtual="true"
+        inherits="DatamineGenericButtonTemplate" enableMouse="true"
+        mixin="DatamineTooltipButtonMixin">
+        <Scripts>
+            <OnEnter method="OnEnter_Base" />
+            <OnLeave method="OnLeave_Base" />
+        </Scripts>
+    </Button>
+
+    <CheckButton name="DatamineCheckButtonTemplate" virtual="true"
+        inherits="DatamineGenericButtonTemplate" registerForClicks="AnyUp">
+        <HighlightTexture inherits="DatamineCustomAtlasTemplate" alphaMode="ADD">
+            <KeyValues>
+                <KeyValue key="FileName" value="Blizzard_UITools.blp" />
+                <KeyValue key="AtlasName" value="uitools-icon-highlight" />
+            </KeyValues>
+        </HighlightTexture>
+        <NormalTexture inherits="DatamineCustomAtlasTemplate">
+            <KeyValues>
+                <KeyValue key="FileName" value="Blizzard_UITools.blp" />
+                <KeyValue key="AtlasName" value="uitools-icon-checkbox" />
+            </KeyValues>
+        </NormalTexture>
+        <CheckedTexture inherits="DatamineCustomAtlasTemplate">
+            <KeyValues>
+                <KeyValue key="FileName" value="Blizzard_UITools.blp" />
+                <KeyValue key="AtlasName" value="uitools-icon-checkmark" />
+            </KeyValues>
+        </CheckedTexture>
+    </CheckButton>
+
+    <CheckButton name="DatamineLabelledCheckButtonTemplate" virtual="true"
+        inherits="DatamineCheckButtonTemplate">
+        <Layers>
+            <Layer level="ARTWORK">
+                <FontString parentKey="Text" font="DatamineCleanFont" justifyH="LEFT"
+                    justifyV="MIDDLE" text="NONE">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" x="5" />
+                        <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" x="5" />
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+    </CheckButton>
+
+    <Button name="DatamineTextButtonTemplate" inherits="DatamineGenericButtonTemplate"
+        mixin="DatamineTextButtonMixin" virtual="true">
+        <Layers>
+            <Layer level="ARTWORK">
+                <FontString parentKey="Text" font="DatamineCleanFont" justifyH="CENTER"
+                    justifyV="MIDDLE" setAllPoints="true" />
+            </Layer>
+        </Layers>
+    </Button>
+
+</Ui>

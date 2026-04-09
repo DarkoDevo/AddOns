@@ -1,0 +1,80 @@
+## Interface: 11508, 20505, 50500, 50503, 120000, 120001
+## Title: _DebugLog
+## Notes: Collect and View Debug Logs
+## Author: Expelliarm5s
+## Version: 1.3.3
+## IconTexture: Interface\Icons\Spell_Shadow_MindBomb.blp
+## SavedVariables: _DebugLogDB
+## X-License: All rights reserved.
+
+## https://warcraft.wiki.gg/wiki/Addon_Categories
+## Category-enUS: Development Tools
+## Category-deDE: Entwicklungstools
+## Category-esES: Herramientas de Desarrollo
+## Category-esMX: Herramientas de Desarrollo
+## Category-frFR: Outils de Développement
+## Category-itIT:
+## Category-koKR:
+## Category-ptBR: Ferramentas de Desenvolvimento
+## Category-ruRU: Инструменты разработки
+## Category-zhCN: 开发工具
+## Category-zhTW: 開發工具
+
+# Libs
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+
+Libs\Ace3\AceAddon-3.0\AceAddon-3.0.xml
+Libs\Ace3\AceEvent-3.0\AceEvent-3.0.xml
+# Libs\Ace3\AceTimer-3.0\AceTimer-3.0.xml
+# Libs\Ace3\AceBucket-3.0\AceBucket-3.0.xml
+# Libs\Ace3\AceHook-3.0\AceHook-3.0.xml
+Libs\Ace3\AceDB-3.0\AceDB-3.0.xml
+Libs\Ace3\AceDBOptions-3.0\AceDBOptions-3.0.xml
+Libs\Ace3\AceLocale-3.0\AceLocale-3.0.xml
+Libs\Ace3\AceConsole-3.0\AceConsole-3.0.xml
+Libs\Ace3\AceGUI-3.0\AceGUI-3.0.xml
+Libs\Ace3\AceConfig-3.0\AceConfig-3.0.xml
+# Libs\Ace3\AceComm-3.0\AceComm-3.0.xml
+# Libs\Ace3\AceTab-3.0\AceTab-3.0.xml
+# Libs\Ace3\AceSerializer-3.0\AceSerializer-3.0.xml
+
+Libs\LibDataBroker-1.1\LibDataBroker-1.1.xml
+Libs\LibQTip-1.0\lib.xml
+# Libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua
+# Libs\AceGUI-3.0-SharedMediaWidgets\widget.xml
+Libs\LibTextDump-1.0\lib.xml
+Libs\LibDBIcon-1.0\lib.xml
+
+# Widgets
+Widgets\DLData.lua
+Widgets\DLEditBox.lua
+Widgets\DLEditScrollFrame.lua
+Widgets\DLFrame.lua
+Widgets\DLInlineGroup.lua
+Widgets\DLSimpleFrame.lua
+Widgets\DLTabGroup.lua
+
+# Locales
+Locale\enUS.lua
+Locale\deDE.lua
+
+# Addon Files
+DebugLog.lua
+Modules\DLOptions.lua
+Modules\DLLDB.lua
+Modules\DLGUI.lua
+Modules\DLTables.lua
+Modules\DLAddOns.lua
+Modules\CacheAddOns.lua
+
+# DebugLog Files
+Modules\DLGUI_debuglog_tab.lua
+Modules\DLGUI_debuglog_fmt.lua
+Modules\DLGUI_debuglog_fmt_chatevents.lua
+Modules\DLGUI_debuglog_fmt_tables.lua
+Modules\DLGUI_debuglog_fmt_events.lua
+Modules\DLGUI_debuglog_fmt_addons.lua
+Modules\DLGUI_debuglog_api.lua
+
+## EOF

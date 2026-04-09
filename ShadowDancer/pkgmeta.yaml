@@ -1,0 +1,10 @@
+package-as: ShadowDancer
+enable-nolib-creation: no
+
+required-dependencies:
+  - Scorpio
+
+manual-changelog: changelog.txt
+
+ignore:
+  - img

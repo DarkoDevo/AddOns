@@ -1,0 +1,11 @@
+## Title: Newb Dev Box |cff00ff00  NDB 2.8.120000
+## Interface: 120000
+## Author: Walkerbo
+## Email: walkerbo.saurfang@gmail.com
+## Notes: An addon developer button box
+## Version: NDB 2.8.120000
+## IconTexture: Interface\AddOns\NewbDevBox\Files\Newb-Dev-Box-Icon
+## Date: Saturday 31 January 2026
+## SavedVariables: NewbDevBoxDisplayButtonsList NewbDevBoxOptionsTable
+
+NewbDevBox.lua

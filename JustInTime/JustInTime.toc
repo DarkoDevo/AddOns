@@ -1,0 +1,12 @@
+## Interface: 120001
+## Title: JustInTime
+## Version: 1.7.14
+## Author: syndenbock
+## Notes: Shows queue times and remaining accept times for all queues
+
+## X-Curse-Project-ID: 297308
+
+## DefaultState: enabled
+## SavedVariables: JustInTime_options
+
+JustInTime.xml

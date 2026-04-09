@@ -1,0 +1,10 @@
+## Title: Newb Dev Box 4 Classic |cff00ff00  NDB4C 2.4.11507
+## Interface: 11503
+## Author: Walkerbo
+## Email: walkerbo.saurfang@gmail.com
+## Notes: An addon developer button box
+## Version: NDB4C 2.4.11507
+## Date: Monday 8 September 2025
+## SavedVariables: NewbDevBoxDisplayButtonsList NewbDevBoxOptionsTable
+
+NewbDevBox.lua

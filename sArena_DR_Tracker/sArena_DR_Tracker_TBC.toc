@@ -1,0 +1,11 @@
+## Interface: 20504
+## Title: sArena |cffff8000DR Tracker|r
+## Notes: Standalone Diminishing Returns Tracker
+## Version: v1.0.0
+## Author: Extracted from sArena Reloaded by Bodify
+## IconTexture: 136071
+## SavedVariables: sArenaDRTrackerDB
+## X-Category: PvP/Arena
+
+sArena_DR_Tracker_TBC.xml
+

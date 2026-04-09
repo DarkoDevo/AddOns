@@ -1,0 +1,48 @@
+
+if GetLocale() ~= "ruRU" then return end
+
+local _, ns = ...
+local L = ns.L
+
+L["... and %d more"] = "... и еще %d"
+L["Addon List"] = "Список аддонов"
+L["Create new set"] = "Создать новый набор"
+L["Delete"] = "Удалить"
+L["Delete set %s?"] = "Удалить набор %s?"
+L["Deleted set %q."] = "Удалён набор %q."
+L["Disable addons from this set"] = "Отключить аддоны из этого набора"
+L["Disable all addons then enable addons in this set."] = "Отключить все аддоны, а затем включить аддоны в этом наборе."
+L["Disabled addons in set %q."] = "Отключены аддоны в наборе %q."
+L["Disabled all addons."] = "Отключены все аддоны."
+L["Enable addons from this set"] = "Включить аддоны из этого набора"
+L["Enabled addons in set %q."] = "Включены аддоны в наборе %q."
+L["Enabled only addons in set %q."] = "Включены только аддоны в наборе %q."
+L["Enter the name for the new set"] = "Введите название нового набора."
+L["Enter the new name for %s"] = "Введите новое название для %s"
+L["FILTER_DISABLED"] = "Выключено"
+L["FILTER_ENABLED"] = "Включено"
+L["FILTER_LOD"] = "Загрузка по требованию"
+L["FILTER_PROTECTED"] = "Защищено"
+L["Include with another set"] = "Включить в другой набор"
+L["Load"] = "Загрузка"
+L["Load out of date"] = "Загрузка устарела"
+L["Memory: %.02f MB"] = "Память: %.02f МБ"
+L["Memory: %.0f KB"] = "Память: %.0f КБ"
+L["No set named %q."] = "Нет набора с именем %q."
+L["Out of date addons are being disabled! They will not be able to load until their interface version is updated or \"Load out of date AddOns\" is checked."] = "Устаревшие аддоны отключаются! Они не смогут загрузиться, пока не обновится версия интерфейса или не будет установлен флажок 'Загружать устаревшие аддоны'."
+L["Problem with protected addon %q (%s)"] = "Проблема с защищенным аддоном %q (%s)"
+L["Reload UI to load these addons."] = "Перезагрузите интерфейс, чтобы загрузить эти аддоны."
+L["Remove an included set"] = "Удалить включенный набор"
+L["Rename"] = "Переименовать"
+L["Reset"] = "Сброс"
+L["Reset addons to what was enabled at login."] = "Сбросить аддоны к тому состоянию, что было включено при входе в систему."
+L["Save"] = "Сохранить"
+L["Save the currently selected addons to %s?"] = "Сохранить текущие выбранные аддоны в %s?"
+L["Saved enabled addons to set %q."] = "Сохранены включенные аддоны для установки %q."
+L["Sets"] = "Наборы"
+L[ [=[There is already a set named "%s".
+Please choose another name.]=] ] = "Набор с названием '%s' уже существует. Выберите другое название."
+L["Toggle Icons"] = "Вкл./выкл. иконки"
+L["Toggle Memory Usage"] = "Вкл./выкл. использование памяти"
+L["View (%d)"] = "Просмотр (%d)"
+

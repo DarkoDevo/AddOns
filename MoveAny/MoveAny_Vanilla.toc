@@ -1,0 +1,59 @@
+## Interface: 11508
+## Version: 1.8.261
+## Title: MoveAny |T135994:16:16:0:0|t by |cff55d2ffD4KiR |T132115:16:16:0:0|t
+## Notes: Move Any Ui or Frame
+## Notes-ruRU: MoveAny - аддон, с помощью которого можно разблокировать и перемещать элементы интерфейса
+## Author: D4KiR |T132115:16:16:0:0|t
+## Category: UI Overhaul
+## Category-deDE: UI-Überholung
+## Category-esES: Renovación de la Interfaz de Usuario
+## Category-esMX: Renovación de la Interfaz de Usuario
+## Category-frFR: Révision de l'Interface Utilisateur
+## Category-itIT: Revisione dell'interfaccia utente
+## Category-koKR: UI 개조
+## Category-ptBR: Reformulação da Interface do Usuário
+## Category-ruRU: Переработка интерфейса
+## Category-zhCN: UI重构
+## Category-zhTW: UI重構
+## DefaultState: enabled
+## SavedVariables: MATAB
+## SavedVariablesPerCharacter: MATABPC
+## X-Curse-Project-ID: 646134
+## X-Wago-ID: e56n3pK9
+## IconTexture: 135994
+
+libs\D4Lib\D4Lib.xml
+
+libs\math.lua
+libs\db.lua
+
+locale\enUS.lua
+locale\deDE.lua
+locale\esES.lua
+locale\frFR.lua
+locale\itIT.lua
+locale\koKR.lua
+locale\ptBR.lua
+locale\ruRU.lua
+locale\zhCN.lua
+locale\zhTW.lua
+
+ele\actionbars.lua
+ele\arenaenemyframes.lua
+ele\bagbar.lua
+ele\buffbar.lua
+ele\debuffbar.lua
+ele\fps.lua
+ele\mavehicleseatindicator.lua
+ele\micromenu.lua
+ele\minimap.lua
+ele\multicastactionbar.lua
+ele\partyframe.lua
+ele\petbar.lua
+ele\stancebar.lua
+
+core.lua
+alpha.lua
+registerwidgets.lua
+moveframes.lua
+settings.lua

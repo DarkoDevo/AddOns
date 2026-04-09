@@ -1,0 +1,32 @@
+## Interface: 120000, 50503, 20505, 11508
+## Author: Blandros
+## Category: Action Bars
+## Version: v4.2.0
+## X-Curse-Project-ID: 913973
+## X-WoWI-ID: 26644
+## X-Wago-ID: b6XV0OGp
+
+## Title: KeyUI
+## Notes: Visualize your keyboard, mouse and keybinds.
+## IconTexture: Interface\AddOns\KeyUI\Media\keyui_icon.blp
+
+## SavedVariables: keyui_settings
+
+embeds.xml
+
+Variables.lua
+Validation.lua
+VersionCompat.lua
+Mappings.lua
+UIHelpers.lua
+Layouts\Keyboard.lua
+Layouts\Mouse.lua
+Layouts\Controller.lua
+Frames\Selection.lua
+Frames\Keyboard.lua
+Frames\Mouse.lua
+Frames\Controller.lua
+Frames\Controls.lua
+Core.lua
+Settings.lua
+Frames\Tutorial.lua

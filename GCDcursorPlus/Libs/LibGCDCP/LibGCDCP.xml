@@ -1,0 +1,6 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="LibGCDCPSettingsMode.lua" />
+	<Script file="LibGCDCPSettingsColorOverrides.lua" />
+	<Include file="LibGCDCPSettingsTemplates.xml" />
+	<Script file="LibGCDCP.lua" />
+</Ui>

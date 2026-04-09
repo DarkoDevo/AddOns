@@ -1,0 +1,16 @@
+## Interface: 120000
+## Title: Diminishing Returns Tracker (DRT)
+## IconTexture: Interface/Icons/Ability_rogue_kidneyshot
+## Notes: Track and display diminishing returns of crowd control abilities
+## Author: Pharmac1st
+## Version: v11.2.0.9-beta
+## SavedVariables: DRTDB
+## X-Curse-Project-ID: 1310424
+
+Core/Changelog.lua
+Core/Embeds.xml
+Core/Core.lua
+Core/Options.lua
+
+Modules/UnitFrames.lua
+Modules/Nameplates.lua

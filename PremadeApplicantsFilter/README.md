@@ -1,0 +1,276 @@
+# Premade Applicants Filter
+
+Premade Applicants Filter helps you limit the visible applicants of the LFG
+Premade Groups tool. When creating a premade group for a popular activity such
+as the latest raid or a high mythic plus dungeon, group leaders find themselves
+with a lot of applicants. Those applicants have to be checked manually for
+role, class, item level and other external metrics such as a Raider.IO rating.
+Premade Applicants Filter aims to help group leaders by filtering out
+applicants that do not match the required criteria.
+
+## Keywords
+
+All applicants are technically an applicant group that consists of a list of
+members. Most of the time, there is only one member in this group. This means
+that all statements about the members of an applicant group have to be 
+quantified using either the *some* or *all* quantifiers. The only unbound
+keyword is the `members` variable which is a direct property of the applicant
+group. This means instead of just boolean expression, you may now write
+some sort of first-order logic expression!
+
+**Examples:**
+
+| Expression                                                             | Explanation                                                                                                                                             |
+|------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `members == 1`                                                         | only applicant groups with one member                                                                                                                   |
+| `some("heal")`                                                         | there is at least one heal in the applicant group                                                                                                       |
+| `all("ilvl >= 400")`                                                   | all members of the applicant group must have item level 400 or better                                                                                   |
+| `all("ilvl >= 400 and (rio > 800 or rioprev > 800 or riomain > 800)")` | all members of the applicant group must have item level 400 or better and a Raider.IO rating of 800 this season, last season or on their main character |
+| `some("heal or deathknight") and none("hunter")`                       | there is at least one heal or deathknight in the group, but no hunter                                                                                   |
+
+### Quantifiers
+
+| Quantifier    | Synonyms | Description                                                                 |
+|---------------|----------|-----------------------------------------------------------------------------|
+| `all("...")`  | `every`  | all members of the applicant group must fulfill the given predicate         |
+| `some("...")` | `exists` | at least one member of the applicant group must fulfill the given predicate |
+| `none("...")` |          | synonym to `not some()`                                                     |
+
+### Global keywords
+
+This keyword must not be quantified (all other keywords require a quantifier).
+
+| Keyword   | Type    | Description                              |
+|-----------|---------|------------------------------------------|
+| `members` | integer | number of members in the applicant group |
+
+### Standard keywords
+
+| Keyword        | Type    | Description                                                 |
+|----------------|---------|-------------------------------------------------------------|
+| `level`        | integer | applicant level                                             |
+| `ilvl`         | integer | maximum item level                                          |
+| `pvpilvl`      | integer | PvP item level                                              |
+| `myilvl`       | integer | your own item level (for comparison)                        |
+| `hlvl`         | integer | honor level                                                 |
+| `relationship` | string  | your relationship to the applicant (friend, guild or empty) |
+| `friend`       | boolean | if applicant is in your friend list                         |
+| `guild`        | boolean | if applicant is in your guild                               |
+| `isleaver`     | boolean | if applicant is often leaving groups                        |
+| `horde`        | boolean | if applicant is a Horde player                              |
+| `alliance`     | boolean | if applicant is an Alliance player                          |
+| `tank`         | boolean | if applicant would like to play tank                        |
+| `healer`       | boolean | if applicant would like to play heal                        |
+| `heal`         | boolean | synonym for `healer`                                        |
+| `damage`       | boolean | if applicant would like to play damage dealer               |
+| `dps`          | boolean | synonym for `damage`                                        |
+| `range`        | boolean | if applicant's class can be a ranged class                  |
+| `melee`        | boolean | if applicant's class can be a melee class                   |
+| `plate`        | boolean | if applicant's class wears plate armor                      | 
+| `mail`         | boolean | if applicant's class wears mail armor                       | 
+| `leather`      | boolean | if applicant's class wears leather armor                    | 
+| `cloth`        | boolean | if applicant's class wears cloth armor                      | 
+| `hasbr`        | boolean | if applicant provides a battle rezz                         | 
+| `hasbl`        | boolean | if applicant provides bloodlust/heroism                     | 
+
+### Class keywords
+
+| Keyword       | Type    | Description                   |
+|---------------|---------|-------------------------------|
+| `deathknight` | boolean | if applicant is a deathknight |
+| `demonhunter` | boolean | if applicant is a demonhunter |
+| `druid`       | boolean | if applicant is a druid       |
+| `hunter`      | boolean | if applicant is a hunter      |
+| `paladin`     | boolean | if applicant is a paladin     |
+| `priest`      | boolean | if applicant is a priest      |
+| `mage`        | boolean | if applicant is a mage        |
+| `monk`        | boolean | if applicant is a monk        |
+| `rogue`       | boolean | if applicant is a rogue       |
+| `shaman`      | boolean | if applicant is a shaman      |
+| `warlock`     | boolean | if applicant is a warlock     |
+| `warrior`     | boolean | if applicant is a warrior     |
+
+## Class Roles
+
+| Keyword                                  | Type    | Description                                                                                          | Example                  |
+|------------------------------------------|---------|------------------------------------------------------------------------------------------------------|--------------------------|
+| `paladin_dps`, `dps_paladins`            | integer | Current number of paladins with damage dealer role in the group. Also works for all other classes.   | `dps_paladins == 0`      |
+| `paladin_heals`, `heal_paladins`         | integer | Current number of paladins with healer role in the group. Also works for all other classes.          | `paladin_heals == 0`     |
+| `paladin_tanks`, `tank_paladins`         | integer | Current number of paladins with protection role in the group. Also works for all other classes.      | `paladin_tanks == 0`     |
+| `deathknight_tanks`, `tank_deathknights` | integer | Current number of death knights with protection role in the group. Also works for all other classes. | `deathknight_tanks <= 2` |
+| `<class>_<role>s`, `<role>_<class>s`     | integer | Current number of <class> with <role> role in the group.                                             |                          |
+
+## Specialization
+
+| Keyword                  | Type    | Description                                    |
+|--------------------------|---------|------------------------------------------------|
+| `blood_deathknights`     | integer | Number of Blood Deathknights in the group.     |
+| `frost_deathknights`     | integer | Number of Frost Deathknights in the group.     |
+| `unholy_deathknights`    | integer | Number of Unholy Deathknights in the group.    |
+| `havoc_demonhunters`     | integer | Number of Havoc Demonhunters in the group.     |
+| `vengeance_demonhunters` | integer | Number of Vengeance Demonhunters in the group. |
+| `devourer_demonhunters`  | integer | Number of Devourer Demonhunters in the group.  |
+| `balance_druids`         | integer | Number of Balance Druids in the group.         |
+| `feral_druids`           | integer | Number of Feral Druids in the group.           |
+| `guardian_druids`        | integer | Number of Guardian Druids in the group.        |
+| `restoration_druids`     | integer | Number of Restoration Druids in the group.     |
+| `devastation_evokers`    | integer | Number of Devastation Evokers in the group.    |
+| `preservation_evokers`   | integer | Number of Preservation Evokers in the group.   |
+| `augmentation_evokers`   | integer | Number of Augmentation Evokers in the group.   |
+| `beastmastery_hunters`   | integer | Number of Beastmastery Hunters in the group.   |
+| `marksmanship_hunters`   | integer | Number of Marksmanship Hunters in the group.   |
+| `survival_hunters`       | integer | Number of Survival Hunters in the group.       |
+| `holy_paladins`          | integer | Number of Holy Paladins in the group.          |
+| `protection_paladins`    | integer | Number of Protection Paladins in the group.    |
+| `retribution_paladins`   | integer | Number of Retribution Paladins in the group.   |
+| `discipline_priests`     | integer | Number of Discipline Priests in the group.     |
+| `holy_priests`           | integer | Number of Holy Priests in the group.           |
+| `shadow_priests`         | integer | Number of Shadow Priests in the group.         |
+| `arcane_mages`           | integer | Number of Arcane Mages in the group.           |
+| `fire_mages`             | integer | Number of Fire Mages in the group.             |
+| `frost_mages`            | integer | Number of Frost Mages in the group.            |
+| `brewmaster_monks`       | integer | Number of Brewmaster Monks in the group.       |
+| `windwalker_monks`       | integer | Number of Windwalker Monks in the group.       |
+| `mistweaver_monks`       | integer | Number of Mistweaver Monks in the group.       |
+| `assassination_rogues`   | integer | Number of Assassination Rogues in the group.   |
+| `outlaw_rogues`          | integer | Number of Outlaw Rogues in the group.          |
+| `subtlety_rogues`        | integer | Number of Subtlety Rogues in the group.        |
+| `elemental_shamans`      | integer | Number of Elemental Shamans in the group.      |
+| `enhancement_shamans`    | integer | Number of Enhancement Shamans in the group.    |
+| `restoration_shamans`    | integer | Number of Restoration Shamans in the group.    |
+| `affliction_warlocks`    | integer | Number of Affliction Warlocks in the group.    |
+| `demonology_warlocks`    | integer | Number of Demonology Warlocks in the group.    |
+| `destruction_warlocks`   | integer | Number of Destruction Warlocks in the group.   |
+| `arms_warriors`          | integer | Number of Arms Warriors in the group.          |
+| `fury_warriors`          | integer | Number of Fury Warriors in the group.          |
+| `protection_warriors`    | integer | Number of Protection Warriors in the group.    |
+
+### Mythic Plus Rating keywords
+
+| Keyword       | Type    | Description                                                         |
+|---------------|---------|---------------------------------------------------------------------|
+| `mprating`    | integer | overall mythic+ dungeon rating (0 if no rating)                     |
+| `mpmaprating` | integer | mythic+ rating in current dungeon (0 if no rating)                  |
+| `mpmapmaxkey` | integer | max key done in current mythic+ dungeon (0 if no rating)            |
+| `mpmapintime` | boolean | current mythic+ dungeon completed successfully (false if no rating) |
+| `mpmapname`   | string  | current mythic+ dungeon name (can be empty if no rating)            |
+
+### PvP Rating keywords
+
+| Keyword           | Type    | Description                              |
+|-------------------|---------|------------------------------------------|
+| `pvprating`       | integer | PvP rating                               |
+| `pvptier`         | integer | PvP tier enumeration (normalized values) |
+| `pvptierx`        | integer | PvP tier enumeration (internal values)   |
+| `pvptiername`     | string  | translated name of PvP tier              |
+| `pvpactivityname` | string  | name of current PvP activity             |
+
+#### PvP Tier
+The following table shows the relation between tier, tierx, tier name and rating.
+
+| `pvptiername` (English) | `pvptier`  | `pvptierx` | Rating |
+|-------------------------|------------|------------|--------|
+| Unranked                | 0          | 0          | -      |
+| Combatant I             | 1          | 1          | 1000   |
+| Combatant II            | 2          | 6          | 1200   |
+| Challenger I            | 3          | 2          | 1400   |
+| Challenger II           | 4          | 7          | 1600   |
+| Rival I                 | 5          | 3          | 1800   |
+| Rival II                | 6          | 8          | 1950   |
+| Duelist                 | 7          | 4          | 2100   |
+| Elite                   | 8          | 5          | 2400   |
+
+### Provided by [Premade Regions](https://github.com/0xbs/premade-regions)
+
+| Keyword  | Type    | Description                                               |
+|----------|---------|-----------------------------------------------------------|
+| `region` | string  | region name of the applicant                              |
+| `oce`    | boolean | if the data center region of the applicant is Sydney      |
+| `chi`    | boolean | if the data center region of the applicant is Chicago     |
+| `la`     | boolean | if the data center region of the applicant is Los Angeles |
+| `mex`    | boolean | if the data center region of the applicant is Mexico      |
+| `bzl`    | boolean | if the data center region of the applicant is Brazil      |
+
+### Provided by Raider.IO
+
+| Keyword             | Type    | Description                                                                                                                         | Example                                                       |
+|---------------------|---------|-------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------|
+| `hasrio`            | boolean | if the group leader has a raider.io profile                                                                                         | `hasrio`                                                      |
+| `norio`             | boolean | if the the group leader does not have a raider.io profile                                                                           | `( norio or rio > 500 )`                                      |
+| `rio`               | integer | Raider.io ranking of the group leader                                                                                               | `rio > 500`                                                   |
+| `rioprev`           | integer | Raider.io ranking in previous season                                                                                                | `rioprev > 500`                                               |
+| `riomain`           | integer | Raider.io ranking of main character                                                                                                 | `riomain > 500`                                               |
+| `rioprevmain`       | integer | Raider.io ranking of main character in previous season                                                                              | `rioprevmain > 500`                                           |
+| `riokey4plus`       | integer | number of dungeons the group leader completed with keystone of level 4 or higher                                                    | `riokey4plus >= 5`                                            |
+| `riokey7plus`       | integer | number of dungeons the group leader completed with keystone of level 7 or higher                                                    | `riokey7plus >= 5`                                            |
+| `riokey10plus`      | integer | number of dungeons the group leader completed with keystone of level 10 or higher                                                   | `riokey10plus >= 5`                                           |
+| `riokey12plus`      | integer | number of dungeons the group leader completed with keystone of level 12 or higher                                                   | `riokey12plus >= 5`                                           |
+| `riokey15plus`      | integer | number of dungeons the group leader completed with keystone of level 15 or higher                                                   | `riokey15plus >= 5`                                           |
+| `riokeymax`         | integer | the maximum keystone level the group leader completed                                                                               | `riokeymax >= 10`                                             |
+| `rionormalprogress` | integer | the number of bosses killed in the current raid on normal difficulty (e.g. 2 means any two bosses killed)                           | `rionormalprogress > 0`                                       |
+| `rioheroicprogress` | integer | the number of bosses killed in the current raid on heroic difficulty (e.g. 2 means any two bosses killed)                           | `rioheroicprogress > 0`                                       |
+| `riomythicprogress` | integer | the number of bosses killed in the current raid on mythic difficulty (e.g. 2 means any two bosses killed)                           | `riomythicprogress > 0`                                       |
+| `riomainprogress`   | integer | the maximum number of bosses killed in the current raid on any difficulty with the main character (i.e. you are looking at a twink) | `riomainprogress > 0`                                         |
+| `rionormalkills`    | table   | a table that contains the number of kills for each boss on normal difficulty                                                        | `rionormalkills[1] > 0` means first boss killed at least once |
+| `rioheroickills`    | table   | a table that contains the number of kills for each boss on heroic difficulty                                                        | `rioheroickills[8] > 0` means 8th boss killed at least once   |
+| `riomythickills`    | table   | a table that contains the number of kills for each boss on mythic difficulty                                                        | `riomythickills[3] > 0` means third boss killed at least once |
+
+## Resources
+
+* [Project on CurseForge](https://www.curseforge.com/wow/addons/premade-applicants-filter)
+* [Project on Wago.io](https://addons.wago.io/addons/premade-applicants-filter)
+
+## License
+
+The software is provided under the GNU General Public License, Version 3. See the `LICENSE` file for details.
+
+
+## Changelog
+
+### Version 3.0.*
+* Support for Midnight
+* Add specialization and role_class keywords
+
+### Version 2.3.*
+* Updated rio keywords
+* Fixed error caused by wrong usage of applicantInfo
+* Bumped TOC
+
+### Version 2.2.*
+* Fix error message on rio*kills
+* Bumped TOC for 10.1.7
+* Fix bug causing micro button to not deselect in some situations
+
+### Version 2.1.3
+* Bumped TOC
+
+### Version 2.1.2
+* Add support for evokers
+* Add keywords `plate`, `mail`, `leather` and `cloth` for armor types
+* Add keyword `hasbr` checking for battle rezz
+* Add keywords `hasbl` checking for Bloodlust/Heroism
+* Fix errors
+
+### Version 2.0.2
+* Bumped TOC
+
+### Version 2.0.1
+* Updated translations
+
+### Version 2.0.0
+* Update for Dragonflight
+* Use Dragonflight interface style
+* Fix Raider.IO keywords
+* Reset window with a right click
+* Many minor fixes
+
+### Version 1.2.1
+* Extended help tooltip with pvplvl and pvprating
+* Fixed "attempt to compare number with nil" with new keywords, they are now properly initialized
+
+### Version 1.2.0
+* Added group leader PvP rating information with keywords pvpactivityname, pvprating, pvptier, pvptierx and pvptiername
+
+### Version 1.1.1
+* Added member keywords mprating (overall dungeon rating), mpmaprating (rating of the current map/dungeon), mpmapmaxkey (highest key done in current dungeon) and mpmapintime (current dungeon was completed successfully)
+

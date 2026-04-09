@@ -1,0 +1,23 @@
+## Interface: 120000
+## Title: Grounded
+## Notes: Creates bindings to show the targeting reticle for ground-targeting spells on key down, and to cast at the cursor on key up.
+## Author: Gello
+## Version: 1.4.0
+## X-WoWI-ID: 25878
+## X-Wago-ID: Xb6XLP6p
+## X-Curse-Project-ID: 439396
+## SavedVariablesPerCharacter: GroundedSavedBinds
+## IconTexture: Interface\AddOns\Grounded\icon
+## Category-enUS: Combat
+## Category-deDE: Kampf
+## Category-esES: Combate
+## Category-esMX: Combate
+## Category-frFR: Combat
+## Category-itIT: Combattimento
+## Category-koKR: 전투
+## Category-ptBR: Combate
+## Category-ruRU: Бой
+## Category-zhCN: 战斗
+## Category-zhTW: 戰鬥
+Grounded.xml
+

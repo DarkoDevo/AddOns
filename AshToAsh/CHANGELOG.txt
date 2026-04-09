@@ -1,0 +1,26 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+## [r021] - 2021-09-19
+- Use a new dialog for the group settings for easy configurations.
+
+## [r020] - 2021-09-15
+- Fix the all check role filter, class filter cause error.
+
+## [r015] - 2021-09-08
+- Fix the grop, role, class filter be reset.
+- Panel can be clone now, choose add panel, the system will ask you.
+- More options added into the menu.
+
+## [r014] - 2021-08-26
+- Fix the action won't stop flash when using spell binding.
+
+## [r012] - 2021-07-28
+- Fix the UnitWatch Panel continue show removed units.
+
+## [1.1.0] - 2021-03-16
+- Auto Hide Macro Condition List Added in the Menu.
+
+## [1.0.0] - 2020-12-04
+### Added
+- The AshToAsh is created.

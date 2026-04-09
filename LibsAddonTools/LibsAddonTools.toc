@@ -1,0 +1,107 @@
+## Interface: 120001, 120005, 50503, 38000, 20505, 11508
+## Title: Lib's - Addon Tools
+## IconTexture: Interface/Addons/LibsAddonTools/Logo-Icon
+## Version: 1.0.0
+## X-Curse-Project-ID: 1460024
+## X-Wago-ID: n6VLM3Gd
+## Author: wutname1
+## SavedVariables: LibsAddonToolsDB, LibATErrorDisplayDB
+## Category: Libraries
+## Category-deDE: Bibliotheken
+## Category-esES: Bibliotecas
+## Category-esMX: Bibliotecas
+## Category-frFR: Bibliothèques
+## Category-itIT: Librerie
+## Category-koKR:
+## Category-ptBR: Bibliotecas
+## Category-ruRU: Библиотеки
+## Category-zhCN: 函数库
+## Category-zhTW: 函式庫
+
+#Load LibStub and CallbackHandler FIRST - required by many Ace3 libraries
+libs\Ace3\LibStub\LibStub.lua
+libs\Ace3\CallbackHandler-1.0\CallbackHandler-1.0.lua
+
+#Load bug system
+libs\bug-grabber\load.xml
+
+# Error Display System - Load after BugGrabber (now safe because LibStub is loaded)
+libs\LibDataBroker\LibDataBroker-1.1.lua
+libs\LibDBIcon-1.0\LibDBIcon-1.0.lua
+Systems\ErrorDisplay\Main.lua
+Systems\ErrorDisplay\ErrorHandler.lua
+Systems\ErrorDisplay\BugWindow.lua
+Systems\ErrorDisplay\Config.lua
+
+#Libraries (rest of Ace3)
+libs\Ace3\Ace3.xml
+
+# Compression & Encoding Libraries
+libs\LibDeflate\lib.xml
+
+# Core Framework
+Core\Framework.lua
+
+# Localization
+Locales\enUS.lua
+
+# Shared UI System
+Core\UI\UIComponents.lua
+Core\UI\BaseWindow.lua
+Core\UI\NavigationTree.lua
+Core\UI\Radio.lua
+Core\UI\ProgressBar.lua
+Core\UI\Slider.lua
+Core\UI\NumericBox.lua
+Core\UI\InfoButton.lua
+Core\UI\WidgetBuilder.lua
+
+# Systems
+# Logger System (split into 3 files for maintainability)
+Systems\Logger\Logger.lua
+Systems\Logger\LoggerUI.lua
+Systems\Logger\LoggerOptions.lua
+
+# Profile Manager System
+Systems\ProfileManager\ProfileManagerUI.lua
+Systems\ProfileManager\Serialization.lua
+Systems\ProfileManager\ProfileManager.lua
+Systems\ProfileManager\BuiltInSystems.lua
+Systems\ProfileManager\Composite.lua
+Systems\ProfileManager\AddonDiscovery.lua
+
+# Setup Wizard System
+Systems\SetupWizard\SetupWizard.lua
+Systems\SetupWizard\SetupWizardUI.lua
+
+# Developer Tools System
+Systems\DeveloperTools\DevTools.lua
+
+# Developer UI System (tabbed: Logs, CLI, Errors, Macros, Addons)
+Systems\DevUI\DevUI.lua
+Systems\DevUI\Tabs\Logs.lua
+Systems\DevUI\Tabs\CLI.lua
+Systems\DevUI\Tabs\Errors.lua
+Systems\DevUI\Tabs\MacroIconSelectorMixin.lua
+Systems\DevUI\Tabs\MacroIconSelector.xml
+Systems\DevUI\Tabs\Macros.lua
+Systems\DevUI\Tabs\AddonManager.lua
+Systems\DevUI\Tabs\Performance.lua
+
+# AddonManager System
+Systems\AddonManager\_AddonManager.Definition.lua
+Systems\AddonManager\AddonManager.lua
+Systems\AddonManager\Core.lua
+Systems\AddonManager\Data\SpecialCases.lua
+Systems\AddonManager\Data\Metadata.lua
+Systems\AddonManager\Features\Search.lua
+Systems\AddonManager\Features\Categories.lua
+Systems\AddonManager\Features\Profiles.lua
+Systems\AddonManager\Features\Dependencies.lua
+Systems\AddonManager\Features\Compatibility.lua
+Systems\AddonManager\Features\Favorites.lua
+Systems\AddonManager\BlizzardAddonListEnhance.lua
+
+# Performance System
+Systems\Performance\_Performance.Definition.lua
+Systems\Performance\Performance.lua

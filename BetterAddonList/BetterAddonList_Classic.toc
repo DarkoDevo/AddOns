@@ -1,0 +1,12 @@
+## Interface: 11507, 50500, 30405
+## Title: BetterAddonList
+## Notes: Enhances the default AddOns list.
+## Author: Neb
+## Version: 1.4.6
+## X-Curse-Project-ID: 86704
+## X-Wago-ID: j6jzLO6R
+## SavedVariables: BetterAddonListDB
+
+locales.xml
+
+BetterAddonList_Classic.lua

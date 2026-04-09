@@ -1,0 +1,8 @@
+## Interface: 120000
+## Title: QuickBuilds
+## Notes: Talent importer for M+ and Raid builds. Supports Modern WoW (Midnight / 12.0).
+## Author: Stinner
+## Version: 1.2.0
+## SavedVariables: QuickBuildsDB
+
+QuickBuilds.lua

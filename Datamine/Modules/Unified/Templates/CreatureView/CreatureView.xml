@@ -1,0 +1,263 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Meorawr/wow-ui-schema/main/UI.xsd">
+
+    <Frame name="DatamineCreaturePickerTemplate" mixin="DatamineCreaturePickerMixin" virtual="true">
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Background" inherits="DatamineMediumGrayBackgroundTemplate"
+                    setAllPoints="true" />
+            </Layer>
+        </Layers>
+        <Frames>
+            <Frame parentKey="TitleBar">
+                <Size y="50" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" />
+                    <Anchor point="TOPRIGHT" />
+                </Anchors>
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <FontString parentKey="TitleText" font="DatamineCleanFontBig">
+                            <Size x="250" />
+                            <Anchors>
+                                <Anchor point="TOP" />
+                                <Anchor point="BOTTOM" relativePoint="CENTER" />
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <EditBox parentKey="SearchBox" inherits="DatamineEditBoxTemplate">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativePoint="LEFT" x="8" />
+                            <Anchor point="BOTTOMRIGHT" x="-4" />
+                        </Anchors>
+                    </EditBox>
+                </Frames>
+            </Frame>
+            <Frame parentKey="CreatureList" inherits="DatamineSearchableListTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.TitleBar"
+                        relativePoint="BOTTOMLEFT" x="4" />
+                    <Anchor point="BOTTOMRIGHT" x="-4" y="4" />
+                </Anchors>
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <FontString parentKey="HelpText" font="DatamineCleanFont"
+                            wordwrap="false"
+                            justifyH="CENTER" justifyV="MIDDLE" text="TEXT HERE"
+                            outline="THICK">
+                            <Anchors>
+                                <Anchor point="CENTER" y="20" />
+                            </Anchors>
+                            <Color r="0.45" g="0.45" b="0.45" a="1" />
+                        </FontString>
+                        <FontString parentKey="HelpTextDetails"
+                            font="DatamineCleanFontSmall"
+                            wordwrap="true"
+                            maxLines="3"
+                            justifyH="CENTER" justifyV="MIDDLE" text="DETAILS"
+                            outline="THICK">
+                            <Anchors>
+                                <Anchor point="TOP" relativeKey="$parent.HelpText"
+                                    relativePoint="BOTTOM" y="-3" />
+                            </Anchors>
+                            <Color r="0.45" g="0.45" b="0.45" a="1" />
+                        </FontString>
+                    </Layer>
+                    <Layer level="BACKGROUND">
+                        <Texture parentKey="Background"
+                            inherits="DatamineDarkGrayBackgroundTemplate"
+                            setAllPoints="true" />
+                    </Layer>
+                </Layers>
+            </Frame>
+        </Frames>
+        <Scripts>
+            <OnLoad method="OnLoad" />
+            <OnShow method="OnShow" />
+        </Scripts>
+    </Frame>
+
+    <Frame name="DatamineCreatureDetailsTemplate" mixin="DatamineCreatureDetailsMixin"
+        inherits="VerticalLayoutFrame"
+        virtual="true">
+        <Size x="225" y="100" />
+        <KeyValues>
+            <KeyValue key="fixedWidth" value="225" type="number" />
+            <KeyValue key="fixedHeight" value="100" type="number" />
+            <KeyValue key="expand" value="false" type="boolean" />
+            <KeyValue key="topPadding" value="4" type="number" />
+            <KeyValue key="bottomPadding" value="4" type="number" />
+            <KeyValue key="leftPadding" value="4" type="number" />
+            <KeyValue key="rightPadding" value="4" type="number" />
+            <KeyValue key="spacing" value="4" type="number" />
+        </KeyValues>
+        <Frames>
+            <Frame parentKey="TitleBar">
+                <Size x="225" y="30" />
+                <KeyValues>
+                    <KeyValue key="layoutIndex" value="1" type="number" />
+                </KeyValues>
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <FontString parentKey="Title" font="DatamineCleanFont" justifyH="CENTER"
+                            text="$CREATURE DETAILS$" setAllPoints="true" />
+                    </Layer>
+                    <Layer level="BACKGROUND">
+                        <Texture parentKey="Background"
+                            inherits="DatamineDarkGrayBackgroundTemplate">
+                            <Anchors>
+                                <Anchor point="TOPLEFT" relativeKey="$parent.Title" x="45" />
+                                <Anchor point="BOTTOMRIGHT" relativeKey="$parent.Title" x="-45" />
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                </Layers>
+            </Frame>
+            <Frame parentKey="Identification">
+                <Size x="225" y="40" />
+                <KeyValues>
+                    <KeyValue key="layoutIndex" value="2" type="number" />
+                    <KeyValue key="topPadding" value="8" type="number" />
+                </KeyValues>
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <FontString parentKey="CreatureID" font="DatamineCleanFontSmallish"
+                            justifyH="LEFT"
+                            text="Creature ID">
+                            <Anchors>
+                                <Anchor point="TOPLEFT" x="4" />
+                                <Anchor point="TOPRIGHT" x="-4" />
+                            </Anchors>
+                        </FontString>
+                        <FontString parentKey="CreatureName" font="DatamineCleanFontMedium"
+                            justifyH="LEFT"
+                            text="Creature Name">
+                            <Anchors>
+                                <Anchor point="TOPLEFT" relativeKey="$parent.CreatureID"
+                                    relativePoint="BOTTOMLEFT" y="-12" />
+                                <Anchor point="TOPRIGHT" relativeKey="$parent.CreatureID"
+                                    relativePoint="BOTTOM" x="15" y="-12" />
+                            </Anchors>
+                        </FontString>
+                        <FontString parentKey="Locale" font="DatamineCleanFont"
+                            justifyH="RIGHT" justifyV="MIDDLE"
+                            text="Locale">
+                            <Anchors>
+                                <Anchor point="TOPRIGHT" x="-8" />
+                            </Anchors>
+                        </FontString>
+                        <FontString parentKey="DisplayID" font="DatamineCleanFont"
+                            justifyH="RIGHT" justifyV="MIDDLE"
+                            text="Display ID">
+                            <Anchors>
+                                <Anchor point="TOPRIGHT" relativeKey="$parent.Locale"
+                                    relativePoint="BOTTOMRIGHT" x="-4" y="-12" />
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+        </Frames>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Background"
+                    inherits="DatamineMediumGrayBackgroundTemplate"
+                    setAllPoints="true" />
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad method="OnLoad" />
+        </Scripts>
+    </Frame>
+
+    <Frame name="DatamineCreatureViewTemplate" mixin="DatamineCreatureViewMixin" virtual="true">
+        <Frames>
+            <Frame parentKey="CreaturePicker" inherits="DatamineCreaturePickerTemplate"
+                frameLevel="5">
+                <Size x="300" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="4" y="-4" />
+                    <Anchor point="BOTTOMLEFT" x="4" y="4" />
+                </Anchors>
+            </Frame>
+            <Frame parentKey="Details" inherits="DatamineCreatureDetailsTemplate">
+                <Anchors>
+                    <Anchor point="TOPRIGHT" x="-8" y="-8" />
+                </Anchors>
+            </Frame>
+            <PlayerModel parentKey="Model" inherits="ModelWithControlsTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="4" relativeKey="$parent.CreaturePicker"
+                        relativePoint="TOPRIGHT" />
+                    <Anchor point="BOTTOMRIGHT" x="-4" />
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture parentKey="Background"
+                            inherits="DatamineLightGrayBackgroundTemplate"
+                            setAllPoints="true" />
+                    </Layer>
+                </Layers>
+            </PlayerModel>
+            <Frame parentKey="LoadingOverlay" frameLevel="1000" fixedFrameLevel="true" hidden="true">
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="4" y="-4" />
+                    <Anchor point="BOTTOMRIGHT" x="-4" y="4" />
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture parentKey="Background">
+                            <Color a="0.6" />
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <Frame parentKey="Spinner" inherits="OutlineLoadingSpinnerTemplate">
+                        <Anchors>
+                            <Anchor point="CENTER" y="10" />
+                        </Anchors>
+                        <Layers>
+                            <Layer level="OVERLAY">
+                                <FontString parentKey="Text" font="DatamineCleanFontSmall"
+                                    text="$Loading$">
+                                    <Anchors>
+                                        <Anchor point="TOP" relativePoint="BOTTOM" y="-8" />
+                                    </Anchors>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+                    </Frame>
+                </Frames>
+                <Animations>
+                    <AnimationGroup parentKey="AnimIn" setToFinalAlpha="true">
+                        <!-- For the translation effect to work this animation must be played in
+                        reverse. -->
+                        <Alpha fromAlpha="1" toAlpha="0" duration="0.15" smoothing="IN" order="1" />
+                        <Alpha fromAlpha="1" toAlpha="0" duration="0.25" smoothing="IN" order="1"
+                            childKey="Spinner" />
+                        <Translation offsetY="-10" duration="0.25" smoothing="IN" order="1"
+                            childKey="Spinner" />
+                    </AnimationGroup>
+                    <AnimationGroup parentKey="AnimOut" setToFinalAlpha="true"
+                        inherits="VisibleWhilePlayingAnimGroupTemplate">
+                        <Alpha fromAlpha="1" toAlpha="0" duration="0.15" smoothing="IN" order="1" />
+                        <Alpha fromAlpha="1" toAlpha="0" duration="0.25" smoothing="IN" order="1"
+                            childKey="Spinner" />
+                    </AnimationGroup>
+                </Animations>
+                <Scripts>
+                    <OnEnter function="nop" />
+                    <OnLeave function="nop" />
+                    <OnMouseWheel function="nop" />
+                </Scripts>
+            </Frame>
+        </Frames>
+        <Scripts>
+            <OnLoad method="OnLoad" />
+            <OnEvent method="OnEvent" />
+            <OnUpdate method="OnUpdate" />
+        </Scripts>
+    </Frame>
+</Ui>

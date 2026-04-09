@@ -1,0 +1,8 @@
+## Interface: 120001
+## Title: Midnight Rotation Probe
+## Author: OpenAI
+## Version: 0.1.0
+## Notes: Probes combat-relevant API data readability/secrecy in WoW Midnight.
+## SavedVariables: MidnightRotationProbeDB
+
+MidnightRotationProbe.lua

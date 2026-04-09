@@ -1,0 +1,100 @@
+## Interface: 120001
+## Title: |cffffd100Housing|r |cffff8000Codex|r
+## Notes: Decor discovery and inspection addon for WoW Housing
+## Author: Daev
+## Version: 2.2.0
+## SavedVariables: HousingCodexDB
+## IconTexture: Interface\AddOns\HousingCodex\HC
+## AddonCompartmentFunc: HousingCodex_OnAddonCompartmentClick
+## AddonCompartmentFuncOnEnter: HousingCodex_OnAddonCompartmentEnter
+## AddonCompartmentFuncOnLeave: HousingCodex_OnAddonCompartmentLeave
+## Category-enUS: Housing
+## Category-deDE: Behausung
+## Category-zhCN: 住宅
+## Category-frFR: Logement
+## OptionalDeps: Blizzard_POIButton, TomTom
+## X-Curse-Project-ID: 1444752
+
+# Libraries
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+Libs\LibDBIcon-1.0\LibDBIcon-1.0.lua
+Libs\Krowi_WorldMapButtons-1.4\Krowi_WorldMapButtons-1.4.xml
+
+# Core modules (load order matters)
+Core\Init.lua
+Core\ContextMenu.lua
+Core\SavedVars.lua
+Core\Fonts.lua
+
+# Localization (before UI — enUS base loads first, then locale overrides)
+Core\Localization.lua
+Locales\enUS.lua
+Locales\deDE.lua
+Locales\frFR.lua
+Locales\zhCN.lua
+
+# Data layer
+Core\Data.lua
+Core\Index.lua
+Core\ZoneIndex.lua
+Core\QuestData.lua
+Core\QuestIdOverrides.lua
+Core\QuestIndex.lua
+Core\AchievementData.lua
+Core\AchievementIndex.lua
+Core\VendorData.lua
+Core\VendorIndex.lua
+Core\VendorMapIndex.lua
+Core\DropData.lua
+Core\DropIndex.lua
+Core\PvPIndex.lua
+Core\RenownData.lua
+Core\RenownIndex.lua
+Core\CraftingData.lua
+Core\CraftingIndex.lua
+Core\ProgressIndex.lua
+Core\WhatsNewData.lua
+Core\TreasureHuntData.lua
+Core\Waypoints.lua
+Core\TreasureHuntWaypoints.lua
+Core\LDB.lua
+Core\EndeavorsData.lua
+
+# UI modules
+UI\MainFrame.lua
+UI\Tabs.lua
+UI\SearchBox.lua
+UI\Filters.lua
+UI\FilterBar.lua
+UI\Categories.lua
+UI\Grid.lua
+UI\TabBase.lua
+UI\QuestsTab.lua
+UI\AchievementsTab.lua
+UI\VendorsTab.lua
+UI\VendorMapPins.xml
+UI\VendorMapPins.lua
+UI\WorldMapButton.xml
+UI\WorldMapButton.lua
+UI\ZoneOverlay.lua
+UI\DropsTab.lua
+UI\PvPTab.lua
+UI\RenownTab.lua
+UI\ProfessionsTab.lua
+UI\ProgressTab.lua
+UI\WhatsNewFrame.lua
+UI\MerchantOverlay.lua
+UI\ContainerOverlay.lua
+UI\VendorTooltipOverlay.lua
+UI\EndeavorsPanel.lua
+
+# Preview
+Preview\PreviewFrame.lua
+
+# Wishlist
+Wishlist\WishlistFrame.lua
+
+# Settings
+Settings\SettingsPanel.lua

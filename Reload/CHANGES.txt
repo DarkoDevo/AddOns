@@ -1,0 +1,34 @@
+lightweight tag a627e168967205a78babdb41d5aea0d2d96b69d8 1.2.1
+Author:	GitHub <noreply@github.com>
+Date:	Fri Jan 23 18:32:19 2026 +0000
+
+commit a627e168967205a78babdb41d5aea0d2d96b69d8
+Author: Matt Anderson <Synse@users.noreply.github.com>
+Date:   Fri Jan 23 18:32:19 2026 +0000
+
+    Bump version to 1.2.1
+
+commit 374c7a597872d74cf46a6a93c2125ed3bcfc1f7b
+Author: Matt Anderson <Synse@users.noreply.github.com>
+Date:   Fri Jan 23 18:31:39 2026 +0000
+
+    Add keybind prefix
+
+commit db3797e946b0eb7a5421147e1f0a82e15ab0dbd9
+Author: Matt Anderson <Synse@users.noreply.github.com>
+Date:   Fri Jan 23 18:29:05 2026 +0000
+
+    Remove unused binding header
+
+commit aa836bc0c9cf02908f644dfa1ccc8a6c4ce4a891
+Author: Matt Anderson <Synse@users.noreply.github.com>
+Date:   Fri Jan 23 18:28:26 2026 +0000
+
+    Move keybind to Miscellaneous
+
+commit 317a49b0b7beaf23d320b9280ab339699e4e8fb8
+Author: Matt Anderson <Synse@users.noreply.github.com>
+Date:   Fri Jan 23 18:27:59 2026 +0000
+
+    Add IconTexture
+

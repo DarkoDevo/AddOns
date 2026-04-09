@@ -1,0 +1,8 @@
+## Interface: 120001
+## Title: Helper Buttons
+## Notes: Simple commands panel
+## Author: BlueMon
+## Version: 2.5
+## SavedVariables: HelperDB
+
+HelperButtons.lua

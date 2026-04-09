@@ -1,0 +1,10 @@
+## Interface: 40402
+## Title: Bulk Buy
+## Version: 1.13
+## Author: Choonster
+## Notes: Allows you to buy vendor items in quantities greater than a single stack size.
+
+## X-Curse-Project-ID: 43523
+## X-WoWI-ID: 21442
+
+core.lua

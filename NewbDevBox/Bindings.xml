@@ -1,0 +1,9 @@
+<!-- Newb Dev Box Keybindings - NDB 2.8.120000 - Sunday 1 February 2026 -->
+<Bindings>
+    <Binding name="NEWBDEVBOXTOGGLENEWBDEVBOXINTERFACEFRAME" header="NEWBDEVBOXKEYBINDINGTITLE" category="Walkerbo's Addons">
+        NEWBDEVBOXTOGGLENEWBDEVBOXINTERFACEFRAME()
+    </Binding>
+    <Binding name="NEWBDEVBOXTOGGLENEWBDEVBOXBUTTONFRAME" category="Walkerbo's Addons">
+        NEWBDEVBOXTOGGLENEWBDEVBOXBUTTONFRAME()
+    </Binding>
+</Bindings>

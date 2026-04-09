@@ -1,0 +1,180 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+    <!-- Load Ace3 Libraries -->
+    <Script file="Libs\LibStub\LibStub.lua"/>
+    <Include file="Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml"/>
+    <Include file="Libs\AceDB-3.0\AceDB-3.0.xml"/>
+
+    <!-- Load addon files -->
+    <Script file="Init.lua"/>
+    <Script file="Data\DrList_TBC.lua"/>
+    <Script file="DiminishingReturns.lua"/>
+    <Script file="Core.lua"/>
+
+    <!-- DR Frame Template -->
+    <Frame name="DRTrackerDRFrameTemplate" enablemouse="true" movable="true" hidden="true" virtual="true">
+        <Size x="28" y="28"/>
+        <Layers>
+            <Layer level="OVERLAY">
+                <Texture parentKey="Border" file="Interface\Buttons\UI-Quickslot-Depress"/>
+            </Layer>
+            
+            <Layer level="ARTWORK">
+                <Texture parentKey="Icon">
+                    <TexCoords left="0.08" right="0.92" top="0.08" bottom="0.92"/>
+                </Texture>
+            </Layer>
+        </Layers>
+
+        <Frames>
+            <Cooldown parentKey="Cooldown" drawBling="false" hideCountdownNumbers="false" inherits="CooldownFrameTemplate">
+                <SwipeTexture>
+                    <Color r="0" g="0" b="0" a="0.6"/>
+                </SwipeTexture>
+                <Scripts>
+                    <OnLoad>
+                        self:SetDrawBling(false)
+                        self:SetReverse(true)
+                        for _, region in next, { self:GetRegions() } do
+                            if region:GetObjectType() == "FontString" then
+                                self.Text = region;
+                                self.Text.fontFile = region:GetFont();
+                            end
+                        end
+                        self.parent = self:GetParent();
+                    </OnLoad>
+                    <OnShow>
+                        self.parent:GetParent():UpdateDRPositions();
+                    </OnShow>
+                    <OnHide>
+                        self.parent:Hide();
+                        self.parent.severity = 1;
+                        self.parent:GetParent():UpdateDRPositions();
+                    </OnHide>
+                </Scripts>
+            </Cooldown>
+            <Frame parentKey="DRTextFrame" frameStrata="HIGH" setAllPoints="true">
+                <Layers>
+                    <Layer level="OVERLAY">
+                        <FontString parentKey="DRText" inherits="GameFontNormalLarge">
+                            <Anchors>
+                                <Anchor point="BOTTOMRIGHT" x="4" y="-4"/>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+        </Frames>
+        <Scripts>
+            <OnLoad>
+                self.severity = 1;
+            </OnLoad>
+        </Scripts>
+    </Frame>
+
+    <!-- Arena Frame Template -->
+    <Frame name="DRTrackerArenaFrameTemplate" mixin="DRTrackerFrameMixin" enablemouse="true" movable="true" virtual="true">
+        <Size x="40" y="40"/>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Background" setAllPoints="true">
+                    <Color r="0" g="0" b="0" a="0.5"/>
+                </Texture>
+            </Layer>
+            <Layer level="ARTWORK">
+                <FontString parentKey="Label" inherits="GameFontNormal">
+                    <Anchors>
+                        <Anchor point="CENTER"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad>
+                self:RegisterForDrag("LeftButton");
+            </OnLoad>
+            <OnDragStart>
+                if IsAltKeyDown() then
+                    self:StartMoving();
+                end
+            </OnDragStart>
+            <OnDragStop>
+                self:StopMovingOrSizing();
+                self.parent:SaveFramePosition(self:GetName():match("arena%d"));
+            </OnDragStop>
+            <OnEnter>
+                GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+                GameTooltip:SetText("DR Tracker - " .. self.unit);
+                GameTooltip:AddLine("Alt+Drag to move", 1, 1, 1);
+                GameTooltip:Show();
+            </OnEnter>
+            <OnLeave>
+                GameTooltip:Hide();
+            </OnLeave>
+        </Scripts>
+    </Frame>
+
+    <!-- Main Addon Frame - TBC supports 5 arena opponents -->
+    <Frame name="DRTracker" mixin="DRTrackerMixin" parent="UIParent">
+        <Size x="1" y="1"/>
+        <Frames>
+            <Frame name="DRTrackerArena1" parentKey="arena1" inherits="DRTrackerArenaFrameTemplate" id="1">
+                <Anchors>
+                    <Anchor point="CENTER" x="0" y="100"/>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        self.Label:SetText("1");
+                    </OnLoad>
+                </Scripts>
+            </Frame>
+            <Frame name="DRTrackerArena2" parentKey="arena2" inherits="DRTrackerArenaFrameTemplate" id="2">
+                <Anchors>
+                    <Anchor point="CENTER" x="0" y="50"/>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        self.Label:SetText("2");
+                    </OnLoad>
+                </Scripts>
+            </Frame>
+            <Frame name="DRTrackerArena3" parentKey="arena3" inherits="DRTrackerArenaFrameTemplate" id="3">
+                <Anchors>
+                    <Anchor point="CENTER" x="0" y="0"/>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        self.Label:SetText("3");
+                    </OnLoad>
+                </Scripts>
+            </Frame>
+            <Frame name="DRTrackerArena4" parentKey="arena4" inherits="DRTrackerArenaFrameTemplate" id="4">
+                <Anchors>
+                    <Anchor point="CENTER" x="0" y="-50"/>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        self.Label:SetText("4");
+                    </OnLoad>
+                </Scripts>
+            </Frame>
+            <Frame name="DRTrackerArena5" parentKey="arena5" inherits="DRTrackerArenaFrameTemplate" id="5">
+                <Anchors>
+                    <Anchor point="CENTER" x="0" y="-100"/>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        self.Label:SetText("5");
+                    </OnLoad>
+                </Scripts>
+            </Frame>
+        </Frames>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+            <OnEvent method="OnEvent"/>
+        </Scripts>
+    </Frame>
+
+</Ui>
+

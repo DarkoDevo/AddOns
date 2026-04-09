@@ -1,0 +1,92 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Meorawr/wow-ui-schema/main/UI.xsd">
+
+    <Button name="DatamineTabTreeViewCategoryHeaderTemplate" virtual="true"
+        mixin="DatamineTabTreeViewCategoryHeaderMixin">
+        <Layers>
+            <Layer level="HIGHLIGHT">
+                <Texture parentKey="HighlightTexture"
+                    atlas="GarrMissionLocation-Maw-ButtonHighlight" alpha="0.35" />
+            </Layer>
+            <Layer level="OVERLAY">
+                <Texture parentKey="Chevron" inherits="DatamineCustomAtlasTemplate">
+                    <Size x="15" y="15" />
+                    <Anchors>
+                        <Anchor point="LEFT" />
+                    </Anchors>
+                    <KeyValues>
+                        <KeyValue key="FileName" value="Blizzard_UITools.blp" />
+                        <KeyValue key="AtlasName" value="uitools-icon-chevron-right" />
+                    </KeyValues>
+                </Texture>
+                <FontString parentKey="Text" font="DatamineCleanFontMedium" text="TITLE">
+                    <Anchors>
+                        <Anchor point="LEFT" relativeKey="$parent.Chevron" relativePoint="RIGHT" />
+                    </Anchors>
+                </FontString>
+            </Layer>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Background" inherits="DatamineMediumGrayBackgroundTemplate" />
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnClick method="OnClick" />
+            <OnUpdate method="OnUpdate" />
+        </Scripts>
+    </Button>
+
+    <Button name="DatamineTabTreeViewChildKeyValueTemplate" virtual="true"
+        mixin="DatamineTabTreeViewChildKeyValueMixin" hyperlinksEnabled="true"
+        propagateHyperlinksToParent="true">
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Background" inherits="DatamineMediumGrayBackgroundTemplate" />
+            </Layer>
+            <Layer level="OVERLAY">
+                <FontString parentKey="Key" font="DatamineCleanFont" text="KEY">
+                    <Anchors>
+                        <Anchor point="LEFT" x="5" />
+                    </Anchors>
+                </FontString>
+                <FontString parentKey="Separator" font="DatamineCleanFontNoShadow" text=" | ">
+                    <Anchors>
+                        <Anchor point="CENTER" />
+                    </Anchors>
+                </FontString>
+                <FontString parentKey="Value" font="DatamineCleanFont" text="VALUE">
+                    <Anchors>
+                        <Anchor point="LEFT" relativePoint="CENTER" x="5" />
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+    </Button>
+
+    <Frame name="DatamineTabTreeViewTemplate" virtual="true"
+        mixin="DatamineTabTreeViewMixin">
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Background_Base" inherits="DatamineLightGrayBackgroundTemplate" />
+            </Layer>
+        </Layers>
+        <Frames>
+            <Frame parentKey="ScrollBox" inherits="WowScrollBoxList">
+                <Anchors>
+                    <Anchor point="TOP" y="-4" />
+                    <Anchor point="BOTTOMLEFT" x="4" y="4" />
+                    <Anchor point="BOTTOMRIGHT" x="-6" y="4" relativeKey="$parent.ScrollBar"
+                        relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Frame>
+            <EventFrame parentKey="ScrollBar" inherits="MinimalScrollBar">
+                <Anchors>
+                    <Anchor point="TOPRIGHT" x="-7" y="-4" />
+                    <Anchor point="BOTTOMRIGHT" x="-7" y="7" />
+                </Anchors>
+            </EventFrame>
+        </Frames>
+        <Scripts>
+            <OnLoad method="OnLoad_Base" />
+        </Scripts>
+    </Frame>
+</Ui>

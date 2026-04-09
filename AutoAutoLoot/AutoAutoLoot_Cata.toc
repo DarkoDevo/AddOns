@@ -1,0 +1,10 @@
+## Title: AutoAutoLoot |cff8D27A8  AAL 1.3.50500
+## Interface: 50500
+## Author: Walkerbo
+## Email: walkerbo.saurfang@gmail.com
+## Notes: Set Auto Loot as a autoLootDefault
+## Version: AAL 1.3.50500
+## IconTexture: Interface\AddOns\AutoAutoLoot\AutoAutoLoot
+## Date: Tuesday 9 September 2025
+
+AutoAutoLoot.lua

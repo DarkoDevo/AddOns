@@ -1,0 +1,8 @@
+<Bindings>
+    <Binding name="Toggle Datamine UI" category="Datamine">
+        DatamineUnifiedFrame:Toggle();
+    </Binding>
+    <Binding name="Quick Reload" category="Datamine">
+        Datamine.Utils.QuickReload();
+    </Binding>
+</Bindings>

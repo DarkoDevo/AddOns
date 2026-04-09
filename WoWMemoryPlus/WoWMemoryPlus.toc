@@ -1,0 +1,12 @@
+## Interface: 120000
+## Title: WoW Memory+
+## Notes: Suivi hebdo, quêtes, To-Do, options
+## Author: Shadow_CVI
+## Version: 0.2
+## SavedVariablesPerCharacter: WoWMemoryPlusPC
+## SavedVariables: WoWMemoryConfig, WoWMemoryDB
+
+Strings.lua
+Localization.lua
+Options_All.lua
+WoWMemoryPlus.lua

@@ -1,0 +1,27 @@
+## Interface: 120001, 11503, 20504, 30405, 40400, 50500
+## Title: ShadowDancer
+## Author: kurapica125@outlook.com
+## Version: r071
+## Notes: A flexible action bar mod
+## Dependencies: Scorpio
+## OptionalDeps: Masque, M6
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: ShadowDancer_DB, ShadowDancer_Settings
+## SavedVariablesPerCharacter: ShadowDancer_CharDB
+## X-Curse-Project-ID: 494640
+## X-Wago-ID: 0mNwnzGo
+
+# Localization
+localization\enUS.lua
+localization\zhCN.lua
+localization\zhTW.lua
+localization\ruRU.lua
+
+# Core
+Template.lua
+ShadowDancer.lua
+ExtraActionButton.lua
+
+# Skin
+MasqueSkin.lua

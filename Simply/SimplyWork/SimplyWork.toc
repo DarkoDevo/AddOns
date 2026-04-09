@@ -1,0 +1,6 @@
+## Interface: 100007
+## Title: My Custom Key Binding Addon
+## Notes: This addon optimizes key bindings based on class and spec.
+## Author: Darko
+SimplyWork.lua
+SimplyWork.xml

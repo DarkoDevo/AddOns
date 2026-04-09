@@ -1,0 +1,14 @@
+{
+    "Lua.diagnostics.globals": [
+        "SlashCmdList",
+        "UIDropDownMenu_SetWidth",
+        "UIDropDownMenu_SetText",
+        "UIDropDownMenu_Initialize",
+        "CopyTable",
+        "UIParent",
+        "UIDropDownMenu_AddButton",
+        "UIDropDownMenu_GetSelectedValue",
+        "UIDropDownMenu_CreateInfo",
+        "UIDropDownMenu_SetSelectedValue"
+    ]
+}

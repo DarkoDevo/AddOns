@@ -1,0 +1,47 @@
+## Interface: 120000, 120001
+## Title: Premade Applicants Filter
+## Version: 3.0.3
+## IconTexture: 252175
+## Notes: Allows filtering of premade group applicants using advanced filter expressions.
+## Notes-deDE: Ermöglicht das Filtern von Anwärten auf organisierten Gruppen mithilfe erweiterter Filterausdrücke.
+## Notes-frFR: Permet de filtrer les candidats de groupe prédéfinis à l'aide d'expressions de filtre avancées.
+## Notes-esES: Permite el filtrado de solicitantes de grupos prefabricados utilizando expresiones de filtro avanzadas.
+## Notes-ruRU: Позволяет фильтровать заранее собранных кандидатов с помощью расширенных выражений фильтра.
+## Notes-koKR: 고급 필터 표현식을 사용하여 미리 만들어진 그룹 지원자를 필터링할 수 있습니다.
+## Notes-zhCN: 允许使用高级过滤器表达式过滤预制组申请人。
+## Notes-zhTW: 允許使用高級過濾器表達式過濾預製組申請人。
+## Author: Elotheon-Arthas-EU
+## SavedVariables:
+## SavedVariablesPerCharacter: PremadeApplicantsFilterState
+## License: GPL-3.0-or-later
+
+## Category-enUS: Dungeons & Raids
+## Category-deDE: Dungeons & Schlachtzüge
+## Category-esES: Mazmorras y bandas
+## Category-esMX: Calabozos y bandas
+## Category-frFR: Donjons et raids
+## Category-itIT: Spedizioni e incursioni
+## Category-koKR: 던전 및 공격대
+## Category-ptBR: Masmorras e Raides
+## Category-ruRU: Подземелья и рейды
+## Category-zhCN: 地下城和团队副本
+## Category-zhTW: 地城與團隊
+
+Init.lua
+Localization\enUS.lua
+Localization\frFR.lua
+Localization\deDE.lua
+Localization\koKR.lua
+Localization\zhCN.lua
+Localization\zhTW.lua
+Localization\ruRU.lua
+Localization\esES.lua
+Modules\Util.lua
+Modules\Expression.lua
+Modules\Specializations.lua
+Plugins\PremadeRegions.lua
+Plugins\RaiderIO.lua
+Main.lua
+Dialog\HelpTooltip.lua
+Dialog\Dialog.lua
+Dialog\Dialog.xml

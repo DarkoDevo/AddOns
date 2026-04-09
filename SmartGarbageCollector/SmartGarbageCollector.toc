@@ -1,0 +1,11 @@
+## Interface: 120001
+## Title: Smart Garbage Collector
+## Author: Lollzer
+## Notes: Take out the trash! /sgc
+## SavedVariables: SmartGarbageCollectorDB
+## Category: Miscellaneous
+## IconTexture: Interface\AddOns\SmartGarbageCollector\Icons\Icon.png
+
+SmartGarbageCollectorProtection.lua
+SmartGarbageCollector.lua
+SmartGarbageCollectorUI.lua

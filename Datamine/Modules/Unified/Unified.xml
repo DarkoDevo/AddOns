@@ -1,0 +1,438 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Meorawr/wow-ui-schema/main/UI.xsd">
+
+    <GameTooltip name="DatamineTooltip" inherits="GameTooltipTemplate" parent="UIParent">
+        <KeyValues>
+            <KeyValue key="supportsItemComparison" value="false" type="boolean" />
+            <KeyValue key="textLeft1Font" value="DatamineCleanFontMedium" type="global" />
+            <KeyValue key="textLeft2Font" value="DatamineCleanSmallish" type="global" />
+            <KeyValue key="textRight1Font" value="DatamineCleanFontSmallish" type="global" />
+            <KeyValue key="textRight1Font" value="DatamineCleanFontSmallish" type="global" />
+        </KeyValues>
+        <Scripts>
+            <OnLoad method="OnLoad" />
+            <OnShow function="GameTooltip_OnShow" />
+            <OnHide function="GameTooltip_OnHide" />
+        </Scripts>
+    </GameTooltip>
+
+    <Frame name="DatamineTitleContainerTemplate" virtual="true"
+        mixin="DatamineTitleContainerMixin">
+        <!-- Add a .TitleText keyValue to set text from XML -->
+        <Layers>
+            <Layer level="ARTWORK">
+                <FontString parentKey="Text" font="DatamineCleanFontBig"
+                    text="TITLE" />
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad method="OnLoad" />
+        </Scripts>
+    </Frame>
+
+    <Frame name="DatamineMovableTitleContainerTemplate" virtual="true" enableMouse="true"
+        inherits="DatamineTitleContainerTemplate"
+        mixin="DatamineMovableTitleContainerMixin">
+        <Scripts>
+            <OnMouseDown method="OnMouseDown" />
+            <OnMouseUp method="OnMouseUp" />
+        </Scripts>
+    </Frame>
+
+    <Frame name="DatamineDataFrameElementTemplate" virtual="true" hyperlinksEnabled="true"
+        mixin="DatamineDataFrameElementMixin">
+        <Size y="25" />
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString parentKey="KeyText" font="DatamineCleanFontNoShadow" justifyH="LEFT"
+                    justifyV="MIDDLE">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" />
+                        <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM" />
+                    </Anchors>
+                </FontString>
+                <FontString parentKey="ValueText" font="DatamineCleanFontNoShadow" justifyH="RIGHT"
+                    justifyV="MIDDLE" maxLines="2">
+                    <Anchors>
+                        <Anchor point="TOPRIGHT" />
+                        <Anchor point="BOTTOMLEFT" relativePoint="BOTTOM" />
+                    </Anchors>
+                </FontString>
+            </Layer>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Background">
+                    <Color r="0.25" g="0.25" b="0.25" a="0.35" />
+                </Texture>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnHyperlinkEnter method="OnHyperlinkEnter" />
+            <OnHyperlinkLeave method="OnHyperlinkLeave" />
+            <OnHyperlinkClick method="OnHyperlinkClick" />
+        </Scripts>
+    </Frame>
+
+    <Frame name="DatamineScrollableDataFrameTemplate" virtual="true"
+        inherits="DatamineTabTreeViewTemplate"
+        mixin="DatamineScrollableDataFrameMixin" enableMouse="true">
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString parentKey="Title" font="DatamineCleanFont" text="TITLE" hidden="true">
+                    <Anchors>
+                        <Anchor point="TOP" y="-15" />
+                    </Anchors>
+                </FontString>
+            </Layer>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Background" inherits="DatamineDarkGrayBackgroundTemplate" />
+            </Layer>
+            <Layer level="ARTWORK">
+                <FontString parentKey="HelpText" font="DatamineCleanFont"
+                    wordwrap="false"
+                    justifyH="CENTER" justifyV="MIDDLE" text="TEXT HERE"
+                    outline="THICK">
+                    <Anchors>
+                        <Anchor point="CENTER" y="20" />
+                    </Anchors>
+                    <Color r="0.45" g="0.45" b="0.45" a="1" />
+                </FontString>
+                <FontString parentKey="HelpTextDetails"
+                    font="DatamineCleanFontSmall"
+                    wordwrap="true"
+                    justifyH="CENTER" justifyV="MIDDLE" text="DETAILS"
+                    outline="THICK">
+                    <Anchors>
+                        <Anchor point="TOP" relativeKey="$parent.HelpText"
+                            relativePoint="BOTTOM" y="-3" />
+                    </Anchors>
+                    <Color r="0.45" g="0.45" b="0.45" a="1" />
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <ItemButton parentKey="Icon" enableMouse="false" hidden="true">
+                <Anchors>
+                    <Anchor point="RIGHT" relativeKey="$parent.Title" relativePoint="LEFT" x="-8" />
+                </Anchors>
+            </ItemButton>
+            <Frame parentKey="LoadingSpinner" inherits="OutlineLoadingSpinnerTemplate" hidden="true">
+                <Anchors>
+                    <Anchor point="CENTER" y="10" />
+                </Anchors>
+                <Layers>
+                    <Layer level="OVERLAY">
+                        <FontString parentKey="Text" font="DatamineCleanFontSmall" text="Loading...">
+                            <Anchors>
+                                <Anchor point="TOP" relativePoint="BOTTOM" y="-8" />
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+            <Frame parentKey="DragDropNineSlice"
+                inherits="NineSlicePanelTemplate" hidden="true">
+                <KeyValues>
+                    <KeyValue key="layoutType" value="DatamineBlueHighlight" />
+                </KeyValues>
+            </Frame>
+        </Frames>
+        <Scripts>
+            <OnLoad method="OnLoad" inherit="prepend" />
+            <OnShow method="OnShow" />
+        </Scripts>
+    </Frame>
+
+    <Frame name="DatamineToolbarTemplate" mixin="DatamineToolbarMixin" virtual="true">
+        <Scripts>
+            <OnLoad method="OnLoad" />
+        </Scripts>
+    </Frame>
+
+    <Frame name="DatamineWorkspaceTemplate" mixin="DatamineWorkspaceMixin" virtual="true">
+        <Frames>
+            <Frame parentKey="ExplorerTab" mixin="DatamineUnifiedExplorerTabMixin">
+                <Size x="300" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="4" y="-4" />
+                    <Anchor point="BOTTOMLEFT" x="4" y="4" />
+                </Anchors>
+                <Frames>
+                    <Frame parentKey="Header" inherits="DatamineTitleContainerTemplate">
+                        <Size y="20" />
+                        <KeyValues>
+                            <KeyValue key="TitleText" value="Explorer" />
+                        </KeyValues>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" x="5" y="-5" />
+                            <Anchor point="TOPRIGHT" y="-5" />
+                        </Anchors>
+                        <Frames>
+                            <Button parentKey="SearchModeButton"
+                                inherits="DatamineGenericButtonTemplate">
+                                <Size x="40" />
+                                <Anchors>
+                                    <Anchor point="TOPRIGHT" x="-5" />
+                                    <Anchor point="BOTTOMRIGHT" y="3" />
+                                </Anchors>
+                                <Layers>
+                                    <Layer level="ARTWORK">
+                                        <FontString parentKey="Text"
+                                            font="DatamineCleanFont"
+                                            wordwrap="false" text="Mode"
+                                            justifyV="MIDDLE" justifyH="CENTER">
+                                        </FontString>
+                                    </Layer>
+                                    <Layer level="BACKGROUND">
+                                        <Texture parentKey="Background"
+                                            inherits="DatamineDarkGrayBackgroundTemplate"
+                                            alpha="0.3" />
+                                    </Layer>
+                                </Layers>
+                            </Button>
+                        </Frames>
+                    </Frame>
+                    <EditBox parentKey="SearchBox" inherits="DatamineEditBoxTemplate" numeric="true"
+                        autoFocus="false" mixin="DatamineSearchBoxMixin">
+                        <Size y="25" />
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeKey="$parent.Header"
+                                relativePoint="BOTTOMLEFT" x="3" />
+                            <Anchor point="TOPRIGHT" relativeKey="$parent.Header"
+                                relativePoint="BOTTOMRIGHT" x="-5" />
+                        </Anchors>
+                        <Scripts>
+                            <OnEnterPressed method="OnEnterPressed" />
+                        </Scripts>
+                    </EditBox>
+                    <Frame parentKey="DataFrame" inherits="DatamineItemViewerTemplate">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeKey="$parent.SearchBox"
+                                relativePoint="BOTTOMLEFT" x="-4" />
+                            <Anchor point="TOPRIGHT" relativeKey="$parent.SearchBox"
+                                relativePoint="BOTTOMRIGHT" />
+                            <Anchor point="BOTTOMLEFT" y="4" />
+                            <Anchor point="BOTTOMRIGHT" x="-4" y="4" />
+                        </Anchors>
+                        <Frames>
+                            <Button parentKey="PreviewButton"
+                                inherits="DatamineTooltipButtonTemplate"
+                                mixin="DataminePreviewButtonMixin" hidden="true">
+                                <Size x="25" y="25" />
+                                <Anchors>
+                                    <Anchor point="TOPRIGHT" y="-10" />
+                                </Anchors>
+                                <Layers>
+                                    <Layer level="ARTWORK">
+                                        <Texture parentKey="NormalTexture"
+                                            inherits="DatamineCustomAtlasTemplate"
+                                            setAllPoints="true">
+                                            <KeyValues>
+                                                <KeyValue key="FileName"
+                                                    value="Blizzard_UITools.blp" />
+                                                <KeyValue key="AtlasName"
+                                                    value="uitools-icon-chevron-right" />
+                                            </KeyValues>
+                                        </Texture>
+                                    </Layer>
+                                </Layers>
+                                <Scripts>
+                                    <OnLoad method="OnLoad" />
+                                    <OnClick method="OnClick" />
+                                </Scripts>
+                            </Button>
+                        </Frames>
+                    </Frame>
+                </Frames>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture parentKey="Background" setAllPoints="true">
+                            <Color r="0.18" g="0.18" b="0.18" />
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <Scripts>
+                    <OnLoad method="OnLoad" />
+                </Scripts>
+            </Frame>
+            <Frame parentKey="DetailsTab">
+                <Size x="300" />
+                <Anchors>
+                    <Anchor point="TOPRIGHT" x="-5" y="-5" />
+                    <Anchor point="BOTTOMRIGHT" x="-5" y="5" />
+                </Anchors>
+                <Frames>
+                    <Frame parentKey="Header" inherits="DatamineTitleContainerTemplate">
+                        <Size y="20" />
+                        <KeyValues>
+                            <KeyValue key="TitleText" value="Model Controls" />
+                        </KeyValues>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" x="5" y="-5" />
+                            <Anchor point="TOPRIGHT" y="-5" />
+                        </Anchors>
+                    </Frame>
+                    <Frame parentKey="Controls" inherits="DatamineTabTreeViewTemplate"
+                        mixin="DatamineModelControlsTreeMixin">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeKey="$parent.Header"
+                                relativePoint="BOTTOMLEFT" />
+                            <Anchor point="BOTTOMRIGHT" x="-5" y="5" />
+                        </Anchors>
+                        <Scripts>
+                            <OnUpdate method="OnUpdate" />
+                            <OnShow method="OnShow" />
+                            <OnLoad method="OnLoad" inherit="prepend" />
+                        </Scripts>
+                    </Frame>
+                </Frames>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture parentKey="Background" setAllPoints="true">
+                            <Color r="0.18" g="0.18" b="0.18" />
+                        </Texture>
+                    </Layer>
+                </Layers>
+            </Frame>
+            <Frame parentKey="ModelViewTab" mixin="DatamineUnifiedModelViewTabMixin">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.ExplorerTab"
+                        relativePoint="TOPRIGHT" x="5" />
+                    <Anchor point="BOTTOMLEFT" relativeKey="$parent.ExplorerTab"
+                        relativePoint="BOTTOMLEFT" x="5" />
+                    <Anchor point="TOPRIGHT" relativeKey="$parent.DetailsTab"
+                        relativePoint="TOPLEFT" x="-5" />
+                    <Anchor point="BOTTOMRIGHT" relativeKey="$parent.DetailsTab"
+                        relativePoint="BOTTOMLEFT" x="-5" />
+                </Anchors>
+                <Frames>
+                    <ModelScene parentKey="ModelScene" inherits="DatamineModelSceneTemplate">
+                        <KeyValues>
+                            <KeyValue key="normalIntensity" value="0.75" type="number" />
+                            <KeyValue key="highlightIntensity" value="1.2" type="number" />
+                        </KeyValues>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" x="5" y="-5" />
+                            <Anchor point="BOTTOMRIGHT" x="-5" y="5" />
+                        </Anchors>
+                        <Frames>
+                            <Button parentKey="AlternateFormButton">
+                                <Size x="50" y="50" />
+                                <Anchors>
+                                    <Anchor point="TOPRIGHT" x="-10" y="-10" />
+                                </Anchors>
+                            </Button>
+                        </Frames>
+                    </ModelScene>
+                </Frames>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture parentKey="Background">
+                            <Color r="0.4" g="0.4" b="0.4" a="1" />
+                        </Texture>
+                    </Layer>
+                </Layers>
+            </Frame>
+            <Frame parentKey="TheaterTab" inherits="DatamineTheaterTabTemplate" setAllPoints="true"
+                hidden="true" />
+            <Frame parentKey="StorageTab" inherits="DatamineStorageViewTemplate" setAllPoints="true"
+                hidden="true" />
+            <Frame parentKey="MapViewTab" inherits="DatamineMapViewerTemplate" setAllPoints="true"
+                hidden="true" />
+            <Frame parentKey="CreatureViewTab" inherits="DatamineCreatureViewTemplate"
+                setAllPoints="true"
+                hidden="true" />
+            <!--<Frame parentKey="CurveViewerTab" inherits="DatamineCurveViewerTabTemplate"
+                setAllPoints="true"
+                hidden="true" />-->
+        </Frames>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Background">
+                    <Color r="0.1" g="0.1" b="0.1" />
+                </Texture>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad method="OnLoad" />
+        </Scripts>
+    </Frame>
+
+    <Frame name="DatamineUnifiedFrame" parent="UIParent" toplevel="true" movable="true"
+        resizable="true" hidden="true" mixin="DatamineUnifiedFrameMixin">
+        <Size x="1366" y="768" />
+        <Anchors>
+            <Anchor point="CENTER" />
+        </Anchors>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Background" setAllPoints="true">
+                    <Color r="0.18" g="0.18" b="0.18" />
+                </Texture>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Frame parentKey="TitleContainer" inherits="DatamineMovableTitleContainerTemplate">
+                <Size y="20" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" />
+                    <Anchor point="TOPRIGHT" />
+                </Anchors>
+                <HitRectInsets>
+                    <AbsInset left="0" right="20" bottom="0" top="0" />
+                </HitRectInsets>
+            </Frame>
+            <Frame parentKey="Toolbar" inherits="DatamineToolbarTemplate">
+                <Size y="30" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.TitleContainer"
+                        relativePoint="BOTTOMLEFT" y="-4" />
+                    <Anchor point="TOPRIGHT" relativeKey="$parent.TitleContainer"
+                        relativePoint="BOTTOMRIGHT" y="-4" />
+                </Anchors>
+            </Frame>
+            <Button parentKey="CloseButton" inherits="DatamineCloseButtonTemplate">
+                <Size x="20" y="20" />
+                <Anchors>
+                    <Anchor point="TOPRIGHT" />
+                </Anchors>
+            </Button>
+            <Button parentKey="ResizeButton" inherits="DatamineGenericButtonTemplate"
+                frameStrata="DIALOG" dontSavePosition="true">
+                <Size x="25" y="25" />
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT" />
+                </Anchors>
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <Texture parentKey="Icon"
+                            file="Interface/AddOns/Datamine/Assets/cornerResize.png"
+                            setAllPoints="true" />
+                    </Layer>
+                </Layers>
+            </Button>
+            <Frame parentKey="Workspace" inherits="DatamineWorkspaceTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.Toolbar"
+                        relativePoint="BOTTOMLEFT" x="5" y="-2" />
+                    <Anchor point="TOPRIGHT" relativeKey="$parent.Toolbar"
+                        relativePoint="BOTTOMRIGHT" x="-5" y="-2" />
+                    <Anchor point="BOTTOMLEFT" x="5" y="5" />
+                    <Anchor point="BOTTOMRIGHT" x="-5" y="5" />
+                </Anchors>
+                <Frames>
+                </Frames>
+            </Frame>
+            <Frame parentKey="ResizeBorder"
+                inherits="NineSlicePanelTemplate" hidden="true" setAllPoints="true">
+                <KeyValues>
+                    <KeyValue key="layoutType" value="DatamineBlueHighlight" />
+                </KeyValues>
+            </Frame>
+        </Frames>
+        <Scripts>
+            <OnLoad method="OnLoad" />
+            <OnShow method="OnShow" />
+            <OnHide method="OnHide" />
+        </Scripts>
+    </Frame>
+</Ui>

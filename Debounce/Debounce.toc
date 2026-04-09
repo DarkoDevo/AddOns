@@ -1,0 +1,22 @@
+## Interface: 120000
+
+## Title: Debounce
+## Version: 2.0.8
+## Author: mundi4
+## Contributors:
+##   ZamestoTV – Russian localization (ruRU)
+## IconTexture: 133015
+## SavedVariables: DebounceVars
+## SavedVariablesPerCharacter: DebounceVarsPerChar
+## OptionalDeps: Clique, Grid2, DevTool, ViragDevTool
+## AddonCompartmentFunc: Debounce_CompartmentFunc
+## Notes: Key Bindings and a Little More.|n|nSlash Command: |cffffff00/deb|r
+## X-Curse-Project-ID: 970278
+
+libs.xml
+locales.xml
+
+Debounce.xml
+DebounceUI.xml
+
+Public.lua
