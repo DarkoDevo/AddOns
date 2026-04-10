@@ -1,8 +1,9 @@
 local addonName, addon = ...
 
 local fmt, tinsert, tremove, mmax, mrand = string.format, table.insert, table.remove, math.max, math.random
-local GetMacroInfo, CreateMacro, EditMacro, InCombatLockdown, GetNumMacros = GetMacroInfo, CreateMacro, EditMacro,
-                                                                             InCombatLockdown, GetNumMacros
+local GetMacroInfo, CreateMacro, EditMacro, DeleteMacro, InCombatLockdown, GetNumMacros = GetMacroInfo, CreateMacro,
+                                                                                           EditMacro, DeleteMacro,
+                                                                                           InCombatLockdown, GetNumMacros
 local TargetUnit, UnitName, next, IsInRaid, UnitIsDead, UnitIsGroupLeader, IsInGroup, UnitOnTaxi, UnitIsPlayer,
       UnitIsUnit = TargetUnit, UnitName, next, IsInRaid, UnitIsDead, UnitIsGroupLeader, IsInGroup, UnitOnTaxi,
                    UnitIsPlayer, UnitIsUnit
@@ -48,11 +49,71 @@ local rareTargets = {}
 
 
 local pendingLeaderUpdate
+local pendingMacroDeletes = {}
+local pendingMacroDeleteRetry
 
 UnitName = addon.GetUnitName
 
+local function CanMutateMacrosNow()
+    if InCombatLockdown() then
+        return false
+    end
+
+    if _G.MovieFrame and _G.MovieFrame:IsShown() then
+        return false
+    end
+
+    if _G.CinematicFrame and _G.CinematicFrame:IsShown() then
+        return false
+    end
+
+    return true
+end
+
+local function SchedulePendingMacroDeleteFlush(self)
+    if pendingMacroDeleteRetry then
+        return
+    end
+
+    pendingMacroDeleteRetry = true
+    C_Timer.After(2, function()
+        pendingMacroDeleteRetry = nil
+        if addon and addon.targeting and addon.targeting.FlushPendingMacroDeletes then
+            addon.targeting:FlushPendingMacroDeletes()
+        end
+    end)
+end
+
+function addon.targeting:FlushPendingMacroDeletes()
+    if not CanMutateMacrosNow() then
+        SchedulePendingMacroDeleteFlush(self)
+        return false
+    end
+
+    for macroName in pairs(pendingMacroDeletes) do
+        pendingMacroDeletes[macroName] = nil
+
+        if GetMacroInfo(macroName) then
+            DeleteMacro(macroName)
+        end
+    end
+
+    return true
+end
+
+function addon.targeting:DeleteMacroWhenSafe(macroName)
+    if not macroName or macroName == "" then
+        return false
+    end
+
+    pendingMacroDeletes[macroName] = true
+    return self:FlushPendingMacroDeletes()
+end
+
 function addon.targeting:Setup()
-    if not addon.settings.profile.enableTargetMacro then DeleteMacro(self.macroName) end
+    if not addon.settings.profile.enableTargetMacro then
+        self:DeleteMacroWhenSafe(self.macroName)
+    end
 
     self:CreateTargetFrame()
 
@@ -74,7 +135,7 @@ function addon.targeting:Setup()
         self:RegisterEvent("GROUP_LEFT")
         self:RegisterEvent("PARTY_LEADER_CHANGED")
     else
-        DeleteMacro(self.followMacroName)
+        self:DeleteMacroWhenSafe(self.followMacroName)
     end
 
     if not addon.settings.profile.enableTargetAutomation then return end
@@ -134,7 +195,7 @@ function addon.targeting:UpdateMacro(queuedTargets)
     if not addon.settings.profile.enableTargetMacro then return end
     if not shouldTargetCheck() then return end
 
-    if InCombatLockdown() then
+    if not CanMutateMacrosNow() then
         macroTargets = queuedTargets or macroTargets
         return
     end
@@ -224,7 +285,7 @@ end
 function addon.targeting:UpdateFollowMacro(leaderName)
     if not addon.settings.profile.createFollowMacro then return end
 
-    if InCombatLockdown() then
+    if not CanMutateMacrosNow() then
         pendingLeaderUpdate = leaderName
         return
     end
@@ -259,7 +320,11 @@ function addon.targeting:UpdateFollowMacro(leaderName)
 end
 
 function addon.targeting:PLAYER_REGEN_ENABLED()
-    if macroTargets then C_Timer.After(0.5, function() self:UpdateMacro(macroTargets) end) end
+    self:FlushPendingMacroDeletes()
+
+    if next(macroTargets) ~= nil then
+        C_Timer.After(0.5, function() self:UpdateMacro(macroTargets) end)
+    end
 
     self:UpdateTargetFrame()
 

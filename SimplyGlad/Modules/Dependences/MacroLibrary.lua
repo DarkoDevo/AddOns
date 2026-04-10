@@ -31,6 +31,7 @@ local CONST 							= A.Const
 local Listener							= A.Listener
 local Print								= A.Print
 local Lib 								= LibStub:NewLibrary("MacroLibrary", 7)
+local hooksecurefunc					= _G.hooksecurefunc
 	  
 local wipe 								= _G.wipe	  
 local MAX_ACCOUNT_MACROS				= _G.MAX_ACCOUNT_MACROS
@@ -95,15 +96,6 @@ Lib.Data								= {
 -- Holds information about action slots which stored a macro 
 Lib.ActionButtons						= {}
 
--------------------------------------------------------------------------------
--- API - Official
--------------------------------------------------------------------------------
-function _G.DeleteMacro(ID)
-	-- Note: Yes, it will cause double enterence to Lib:UpdateMacros() but it will be fired BEFORE events such as ACTIONBAR_SLOT_CHANGED
-	Lib:UpdateMacros()
-	return originalDeleteMacro(ID)
-end
-
 function Lib:CreateMacro(macroName, macroIcon, macroBody, perCharacter, isLocal)
 	return CreateMacro(macroName, macroIcon, macroBody, perCharacter, isLocal)
 end
@@ -163,19 +155,21 @@ function Lib:SelectTab(tab)
 end 
 
 function Lib:SelectMacro(ID)
-	if ID then
-		if ID <= MAX_ACCOUNT_MACROS then
+	if ID then 
+		-- Select tab 
+		if ID <= MAX_ACCOUNT_MACROS then 
 			self:SelectTab(1)
-		else
+		else 
 			self:SelectTab(2)
-		end
-
-		local ok, err = pcall(MacroFrame_SelectMacro, ID, true)
-		if ok then
-			pcall(MacroFrame_Update)
-		end
-	end
-end
+		end 
+		
+		-- Select macro 	
+		MacroFrame_SelectMacro(ID, true)
+		
+		-- Refresh frame
+		MacroFrame_Update()
+	end 
+end 
 
 function Lib:WipeMacros()
 	for k, v in pairs(self.Data) do 
@@ -342,7 +336,11 @@ function Lib:DeleteMacro(ID)
 	if InCombatLockdown() then 
 		return "InCombatLockdown"
 	end 
-	DeleteMacro(ID)
+
+	local deleted = DeleteMacro(ID)
+	Lib:UpdateMacros()
+
+	return deleted
 end
 
 function Lib:GetFreeNum()
@@ -558,8 +556,13 @@ Listener:Add("ACTION_EVENT_MACRO_LIBRARY", "ADDON_LOADED", function(addonName)
 		Lib.MacroFrameTab1				= _G.MacroFrameTab1
 		Lib.MacroFrameTab2				= _G.MacroFrameTab2
 		
-		-- This local will be overwritten by below 'function _G.DeleteMacro'
 		DeleteMacro						= _G.DeleteMacro					
+
+		if type(hooksecurefunc) == "function" then
+			hooksecurefunc("DeleteMacro", function()
+				Lib:UpdateMacros()
+			end)
+		end
 		
 		Listener:Remove("ACTION_EVENT_MACRO_LIBRARY", "ADDON_LOADED")	
 	end 
